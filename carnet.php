@@ -1,5 +1,9 @@
-<?php include('pdo.php'); ?>
-<?php
+<?php $pdo = new PDO('mysql:host=localhost;dbname=mon_carnet', "root", "root");
+$requestvaccin = $pdo->prepare("SELECT * FROM `vaccin`"); //Préparer
+$requestvaccin->execute(); //Executer 
+$vaccins = $requestvaccin->fetchAll();
+session_start();
+
 
 
 if (!empty($_POST["nom"]) && !empty($_POST["date"])) {
