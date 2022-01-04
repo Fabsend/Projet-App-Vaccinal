@@ -15,7 +15,7 @@
 
 
         <div class="contact">
-            <h3>Contact :</h3>
+            <h3>Contact :</h3><br>
             <ul>
 
                 <li><img src="SM_icons/facebook.png" alt="fb"><br> Facebook</li>
@@ -27,9 +27,15 @@
             </ul>
         </div>
 
-        <div class="More :">
-            
-            <h3><a href="#"> Mention Légales . . .</a></h3>
+        <div class="infos">
+
+            <ul>
+                <h3>Informations :</h3><br>
+
+                <li><a href="mentionlegale.php" target="blank"> Mention légale</a></li>
+                <li>Service client</li>
+                <li><a href="https://www.sante.fr/" target="blank"> Santé.fr</a></li>
+            </ul>
 
 
         </div>
