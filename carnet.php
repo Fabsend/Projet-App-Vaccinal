@@ -1,19 +1,25 @@
-<?php include('pdo.php'); ?>
-<?php
+<?php $pdo = new PDO('mysql:host=localhost;dbname=mon_carnet', "root", "root");
+$requestvaccin = $pdo->prepare("SELECT * FROM `vaccin` JOIN utilisateur ON vaccin.utilisateur_id=utilisateur.id"); //Préparer
+$requestvaccin->execute(); //Executer 
+$vaccins = $requestvaccin->fetchAll();
 
+session_start();
 
 if (!empty($_POST["nom"]) && !empty($_POST["date"])) {
     $nom = $_POST["nom"];
     $date = $_POST["date"];
+    $id = $_SESSION["id"];
 
 
-    $insertvaccin = $pdo->prepare("INSERT INTO vaccin (nom,date) VALUES ('$nom','$date')");
+
+    $insertvaccin = $pdo->prepare("INSERT INTO vaccin (nomvaccin,date,utilisateur_id) VALUES ('$nom','$date','$id')");
     $insertvaccin->execute();
     header('Location: carnet.php');
 }
 if (!empty($_POST["supprimer"]) && !empty($_POST["idinput"])) {
-    $id = $_POST["idinput"];
-    $suppvaccin = $pdo->prepare("DELETE FROM vaccin WHERE id = '$id' ");
+    $idinput = $_POST["idinput"];
+
+    $suppvaccin = $pdo->prepare("DELETE FROM vaccin WHERE idvaccin = '$idinput' ");
     $suppvaccin->execute();
     header('Location: carnet.php');
 }
@@ -29,92 +35,102 @@ if (!empty($_POST["supprimer"]) && !empty($_POST["idinput"])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="carnet.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="footer.css">
     <title>Vaccina</title>
 </head>
 
 <body>
+    <?php include("header.php") ?>
 
 
+    <div class="carnet">
+        <div class="infoperso">
 
-
-    <div>
-        <div>
             <h4><?php echo $_SESSION["nom"] ?></h4>
-        </div>
-        <div>
+
+
             <h4><?php echo $_SESSION["prenom"] ?></h4>
-        </div>
-        <div>
+
+
             <h4><?php echo $_SESSION["email"] ?></h4>
-        </div>
-        <div>
+
             <h4><?php echo $_SESSION["date_de_naissance"] ?></h4>
+
         </div>
-    </div>
 
-    <div>
-        <form action="" method="POST">
-            <select name="nom">
-                <option value="">Type de Vaccin</option>
-                <option value="Covid-19 BioNTech/Pfizer">Covid-19 BioNTech/Pfizer</option>
-                <option value="Covid-19 Moderna">Covid-19 Moderna</option>
-                <option value="Covid-19 AstraZeneca">Covid-19 AstraZeneca</option>
-                <option value="Covid-19 Johnson&Johnson">Covid-19 Johnson&Johnson</option>
-                <option value="Coqueluche DTCaPolio">Coqueluche DTCaPolio</option>
-                <option value="Rougeole/Rubéole/Oreillons Priorix">Rougeole/Rubéole/Oreillons Priorix</option>
-                <option value="Rougeole/Rubéole/Oreillons Rvaxpro">Rougeole/Rubéole/Oreillons Rvaxpro</option>
-                <option value="Hépatite B">Hépatite B</option>
-                <option value="Pneumocoque Prevenar 13">Pneumocoque Prevenar 13</option>
-                <option value="Pneumocoque Pneumovax ">Pneumocoque Pneumovax </option>
-                <option value="Méningocoque C Menjugate">Méningocoque C Menjugate</option>
-                <option value="Méningocoque C Neisvac">Méningocoque C Neisvac</option>
-                <option value="Méningocoque C Menveo">Méningocoque C Menveo</option>
-                <option value="Haemophilus Hexyon">Haemophilus Hexyon</option>
-            </select>
+        <div class="vaccin">
+            <form action="" method="POST" class="ajoutvaccin">
+                <div class="select">
+                    <span class="fleche"></span>
+                    <select name="nom" class="contour">
+                        <option value="">Type de Vaccin</option>
+                        <option value="Covid-19 BioNTech/Pfizer">Covid-19 BioNTech/Pfizer</option>
+                        <option value="Covid-19 Moderna">Covid-19 Moderna</option>
+                        <option value="Covid-19 AstraZeneca">Covid-19 AstraZeneca</option>
+                        <option value="Covid-19 Johnson&Johnson">Covid-19 Johnson&Johnson</option>
+                        <option value="Coqueluche DTCaPolio">Coqueluche DTCaPolio</option>
+                        <option value="Rougeole/Rubéole/Oreillons Priorix">Rougeole/Rubéole/Oreillons Priorix</option>
+                        <option value="Rougeole/Rubéole/Oreillons Rvaxpro">Rougeole/Rubéole/Oreillons Rvaxpro</option>
+                        <option value="Hépatite B">Hépatite B</option>
+                        <option value="Pneumocoque Prevenar 13">Pneumocoque Prevenar 13</option>
+                        <option value="Pneumocoque Pneumovax ">Pneumocoque Pneumovax </option>
+                        <option value="Méningocoque C Menjugate">Méningocoque C Menjugate</option>
+                        <option value="Méningocoque C Neisvac">Méningocoque C Neisvac</option>
+                        <option value="Méningocoque C Menveo">Méningocoque C Menveo</option>
+                        <option value="Haemophilus Hexyon">Haemophilus Hexyon</option>
+                    </select>
+                </div>
 
+                <div class="datevaccin contour">
+                    <p>Date du vaccin</p>
+                    <input type="date" name="date" value="date du vaccin">
+                </div>
+                <input type="submit" class=" submit contour" value="Ajouter">
 
-            <label for="date">Date du Vaccin</label>
-            <input type="date" name="date">
+            </form>
 
-            <input type="submit" value="Ajouter">
-
-        </form>
-
-        <div>
             <div>
-                <?php
+                <div class="tableau">
+                    <?php
 
-                foreach ($vaccins as $vaccin) {
-                    if ($_SESSION['id'] == $vaccin['utilisateur_id']) { ?>
-                        <table>
-                            <tr>
-                                <td>
+                    foreach ($vaccins as $vaccin) {
+                        if ($_SESSION['id'] == $vaccin['utilisateur_id']) { ?>
 
-                                    <p> <?php echo $vaccin['nomvaccin']; ?></p>
-                                    <p> <?php echo $vaccin['date']; ?></p>
-                                    <a href="#">Modifier</a>
-                                    <form action="" method="POST">
-                                        <input type="text" name="idinput" hidden value="<?php echo $vaccin['idvaccin'] ?>">
-                                        <input type="submit" class="delete" name="supprimer" value="Supprimer">
-                                    </form>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <div class="infovaccin">
+                                            <p> <?php echo $vaccin['nomvaccin']; ?></p>
+                                            <p> <?php echo $vaccin['date']; ?></p>
+                                        </div>
+                                        <div class="option-vaccin">
+
+                                        <?php echo("<a href='modifier.php?nomvaccin=". $vaccin['nomvaccin'] ."&date=". $vaccin['date'] ."&id=". $vaccin['idvaccin'] ."'>Modifier</a>");?>
+                                            <form action="" method="POST">
+                                                <input class="button" type="text" name="idinput" hidden value="<?php echo $vaccin['idvaccin'] ?>">
+                                                <input type="submit" class="delete" name="supprimer" value="Supprimer">
+                                            </form>
+                                        </div>
 
 
-                                </td>
-                            </tr>
-                        </table>
+                                    </td>
+                                </tr>
+                            </table>
 
-                <?php
+                    <?php
+                        }
                     }
-                }
-                ?>
+                    ?>
 
+                </div>
             </div>
+
+
         </div>
-
-
     </div>
 
-
+    <?php include("footer.php") ?>
 
 </body>
 
