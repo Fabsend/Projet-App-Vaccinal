@@ -4,6 +4,7 @@ session_start();
 
 
 
+
 if (!empty($_POST["email"]) && !empty($_POST["password"])) {
     $email = $_POST["email"];
     $password = $_POST["password"];
@@ -13,7 +14,9 @@ if (!empty($_POST["email"]) && !empty($_POST["password"])) {
     $requestUtilisateur->execute();
     $users = $requestUtilisateur->fetch();
 
-    if (!empty($users) && $users['role']=='user') {
+
+
+    if (!empty($users) && $users['role'] == 'user') {
         $_SESSION["nom"] = $users["nom"];
         $_SESSION["prenom"] = $users["prenom"];
         $_SESSION["date_de_naissance"] = $users["date_de_naissance"];
@@ -22,10 +25,14 @@ if (!empty($_POST["email"]) && !empty($_POST["password"])) {
         $_SESSION["id"] = $users["id"];
         $_SESSION["connected"] = true;
         header('Location: carnet.php');
+    } else 
+    if (!empty($users) && $users['role'] == 'admin') {
+        header('Location: pageadmin.php');
+    } else {
+        $message_erreur = true;
     }
-    else{
-        header('Location: index.html'); 
-    }
+} else {
+    $message_erreur = false;
 }
 ?>
 
@@ -64,7 +71,11 @@ if (!empty($_POST["email"]) && !empty($_POST["password"])) {
                 <h1>Connexion</h1>
                 <input type="mail" name="email" placeholder="Adresse Mail" class="connex"> <br>
                 <input type="password" name="password" placeholder="Mot de passe" class="connex"><br>
-                <input type="submit" value="Valider" class="valider"> <br>
+                <input type="submit" value="Valider" class="valider"><br>
+                <?php
+                if ($message_erreur == true) {
+                    echo "<p class='message_erreur'>Utilisateur ou Mot de passe inconnu</p>";
+                } ?>
                 Vous n'avez pas un compte ? <a href="inscription.php">Créer un compte</a>
 
             </form>
