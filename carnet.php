@@ -5,9 +5,6 @@ $vaccins = $requestvaccin->fetchAll();
 
 session_start();
 
-
-
-
 if (!empty($_POST["nom"]) && !empty($_POST["date"])) {
     $nom = $_POST["nom"];
     $date = $_POST["date"];
@@ -42,10 +39,6 @@ if (!empty($_POST["supprimer"]) && !empty($_POST["idinput"])) {
 </head>
 
 <body>
-
-
-
-
     <div>
         <div>
             <h4><?php echo $_SESSION["nom"] ?></h4>
@@ -101,7 +94,7 @@ if (!empty($_POST["supprimer"]) && !empty($_POST["idinput"])) {
 
                                     <p> <?php echo $vaccin['nomvaccin']; ?></p>
                                     <p> <?php echo $vaccin['date']; ?></p>
-                                    <a href="#">Modifier</a>
+                                    <?php echo("<a href='modifier.php?nomvaccin=". $vaccin['nomvaccin'] ."&date=". $vaccin['date'] ."&id=". $vaccin['idvaccin'] ."'>Modifier</a>");?>
                                     <form action="" method="POST">
                                         <input type="text" name="idinput" hidden value="<?php echo $vaccin['idvaccin'] ?>">
                                         <input type="submit" class="delete" name="supprimer" value="Supprimer">
