@@ -1,23 +1,33 @@
 <?php $pdo = new PDO('mysql:host=localhost;dbname=mon_carnet', "root", "root");
-$requestvaccin = $pdo->prepare("SELECT * FROM `vaccin`"); //Préparer
+$requestvaccin = $pdo->prepare("SELECT * FROM `vaccin` JOIN utilisateur ON vaccin.utilisateur_id=utilisateur.id"); //Préparer
 $requestvaccin->execute(); //Executer 
 $vaccins = $requestvaccin->fetchAll();
+
 session_start();
+if (!empty($_SESSION["connected"])) {
+
+    $requestUtilisateur = $pdo->prepare("SELECT * FROM utilisateur ");
+    $requestUtilisateur->execute();
+    $users = $requestUtilisateur->fetch();
+}
 
 
 
 if (!empty($_POST["nom"]) && !empty($_POST["date"])) {
     $nom = $_POST["nom"];
     $date = $_POST["date"];
+    $id = $_SESSION["id"];
 
 
-    $insertvaccin = $pdo->prepare("INSERT INTO vaccin (nom,date) VALUES ('$nom','$date')");
+
+    $insertvaccin = $pdo->prepare("INSERT INTO vaccin (nomvaccin,date,utilisateur_id) VALUES ('$nom','$date','$id')");
     $insertvaccin->execute();
     header('Location: carnet.php');
 }
 if (!empty($_POST["supprimer"]) && !empty($_POST["idinput"])) {
-    $id = $_POST["idinput"];
-    $suppvaccin = $pdo->prepare("DELETE FROM vaccin WHERE id = '$id' ");
+    $idinput = $_POST["idinput"];
+
+    $suppvaccin = $pdo->prepare("DELETE FROM vaccin WHERE idvaccin = '$idinput' ");
     $suppvaccin->execute();
     header('Location: carnet.php');
 }
@@ -39,16 +49,16 @@ if (!empty($_POST["supprimer"]) && !empty($_POST["idinput"])) {
 <body>
     <div>
         <div>
-            <h4>nom</h4>
+            <h4><?php echo $_SESSION["nom"] ?></h4>
         </div>
         <div>
-            <h4>prenom</h4>
+            <h4><?php echo $_SESSION["prenom"] ?></h4>
         </div>
         <div>
-            <h4>email</h4>
+            <h4><?php echo $_SESSION["email"] ?></h4>
         </div>
         <div>
-            <h4>date_de_naissance</h4>
+            <h4><?php echo $_SESSION["date_de_naissance"] ?></h4>
         </div>
     </div>
 
@@ -82,25 +92,29 @@ if (!empty($_POST["supprimer"]) && !empty($_POST["idinput"])) {
 
         <div>
             <div>
-                <?php foreach ($vaccins as $vaccin) { ?>
-                    <table>
-                        <tr>
-                            <td>
+                <?php
 
-                                <p> <?php echo $vaccin['nom']; ?></p>
-                                <p> <?php echo $vaccin['date']; ?></p>
-                                <a href="#">Modifier</a>
-                                <form action="" method="POST">
-                                    <input type="text" name="idinput" hidden value="<?php echo $vaccin['id'] ?>">
-                                    <input type="submit" name="supprimer" value="Supprimer">
-                                </form>
+                foreach ($vaccins as $vaccin) {
+                    if ($_SESSION['id'] == $vaccin['utilisateur_id']) { ?>
+                        <table>
+                            <tr>
+                                <td>
+
+                                    <p> <?php echo $vaccin['nomvaccin']; ?></p>
+                                    <p> <?php echo $vaccin['date']; ?></p>
+                                    <a href="#">Modifier</a>
+                                    <form action="" method="POST">
+                                        <input type="text" name="idinput" hidden value="<?php echo $vaccin['idvaccin'] ?>">
+                                        <input type="submit" class="delete" name="supprimer" value="Supprimer">
+                                    </form>
 
 
-                            </td>
-                        </tr>
-                    </table>
+                                </td>
+                            </tr>
+                        </table>
 
                 <?php
+                    }
                 }
                 ?>
 
