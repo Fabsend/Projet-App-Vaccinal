@@ -17,7 +17,7 @@ if (!empty($_POST["nom"]) && !empty($_POST["date"])) {
     $insertvaccin->execute();
     header('Location: carnet.php');
 }
-if (!empty($_POST['supprimer_x'] && $_POST['supprimer_y']) && !empty($_POST["idinput"])) {
+if (!empty($_POST['supprimer_x']) && !empty($_POST["idinput"])) {
     $idinput = $_POST["idinput"];
 
 
