@@ -5,12 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="modifier.css">
     <title>Document</title>
 </head>
 
 <body>
     <?php
     include("header.php") ?>
+    <h2>modifiez le vaccin sur votre carnet</h2><br>
     <form action="" method="POST">
         <select name="nom">
             <option value="">Type de Vaccin</option>
