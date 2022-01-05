@@ -4,12 +4,7 @@ $requestvaccin->execute(); //Executer
 $vaccins = $requestvaccin->fetchAll();
 
 session_start();
-if (!empty($_SESSION["connected"])) {
 
-    $requestUtilisateur = $pdo->prepare("SELECT * FROM utilisateur ");
-    $requestUtilisateur->execute();
-    $users = $requestUtilisateur->fetch();
-}
 
 
 
@@ -47,6 +42,10 @@ if (!empty($_POST["supprimer"]) && !empty($_POST["idinput"])) {
 </head>
 
 <body>
+
+
+
+
     <div>
         <div>
             <h4><?php echo $_SESSION["nom"] ?></h4>
