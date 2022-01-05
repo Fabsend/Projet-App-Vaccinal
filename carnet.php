@@ -12,12 +12,14 @@ if (!empty($_POST["nom"]) && !empty($_POST["date"])) {
 
 
 
+
     $insertvaccin = $pdo->prepare("INSERT INTO vaccin (nomvaccin,date,utilisateur_id) VALUES ('$nom','$date','$id')");
     $insertvaccin->execute();
     header('Location: carnet.php');
 }
-if (!empty($_POST["supprimer"]) && !empty($_POST["idinput"])) {
+if (!empty($_POST['supprimer_x'] && $_POST['supprimer_y']) && !empty($_POST["idinput"])) {
     $idinput = $_POST["idinput"];
+
 
     $suppvaccin = $pdo->prepare("DELETE FROM vaccin WHERE idvaccin = '$idinput' ");
     $suppvaccin->execute();
@@ -105,11 +107,15 @@ if (!empty($_POST["supprimer"]) && !empty($_POST["idinput"])) {
                                             <p> <?php echo $vaccin['date']; ?></p>
                                         </div>
                                         <div class="option-vaccin">
+                                            <div class="button">
+                                                <?php echo ("<a href='modifier.php?nomvaccin=" . $vaccin['nomvaccin'] . "&date=" . $vaccin['date'] . "&id=" . $vaccin['idvaccin'] . "'><img src='SM_icons/modify.png'/></a>"); ?>
+                                            </div>
 
-                                        <?php echo("<a href='modifier.php?nomvaccin=". $vaccin['nomvaccin'] ."&date=". $vaccin['date'] ."&id=". $vaccin['idvaccin'] ."'>Modifier</a>");?>
                                             <form action="" method="POST">
-                                                <input class="button" type="text" name="idinput" hidden value="<?php echo $vaccin['idvaccin'] ?>">
-                                                <input type="submit" class="delete" name="supprimer" value="Supprimer">
+                                                <input type="text" name="idinput" hidden value="<?php echo $vaccin['idvaccin'] ?>">
+                                                <div class="button supprimer">
+                                                    <input type="image" class="delete" name="supprimer" src="SM_icons/trash.png">
+                                                </div>
                                             </form>
                                         </div>
 
