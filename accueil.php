@@ -1,3 +1,32 @@
+<?php
+$pdo = new PDO('mysql:host=localhost;dbname=mon_carnet', "root", "root");
+session_start();
+
+
+
+if (!empty($_POST["email"]) && !empty($_POST["password"])) {
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+
+
+    $requestUtilisateur = $pdo->prepare("SELECT * FROM utilisateur WHERE email = '$email' AND password ='$password'");
+    $requestUtilisateur->execute();
+    $users = $requestUtilisateur->fetch();
+
+    if (!empty($users)) {
+        $_SESSION["nom"] = $users["nom"];
+        $_SESSION["prenom"] = $users["prenom"];
+        $_SESSION["date_de_naissance"] = $users["date_de_naissance"];
+        $_SESSION["email"] = $users["email"];
+        $_SESSION["password"] = $users["password"];
+        $_SESSION["id"] = $users["id"];
+        $_SESSION["connected"] = true;
+        header('Location: carnet.php');
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,12 +57,12 @@
 
         <div>
 
-            <form action="">
+            <form action="" method="POST">
                 <h1>Connexion</h1>
-                <input type="text" placeholder="Adresse Mail" class="connex"> <br>
-                <input type="password" name="password" placeholder="Mot de pass" class="connex"><br>
+                <input type="mail" name="email" placeholder="Adresse Mail" class="connex"> <br>
+                <input type="password" name="password" placeholder="Mot de passe" class="connex"><br>
                 <input type="submit" value="Valider" class="valider"> <br>
-                Vous n'avez pas un compte ? <a href="#">Créer un compte</a>
+                Vous n'avez pas un compte ? <a href="inscription.php">Créer un compte</a>
 
             </form>
         </div>
