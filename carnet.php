@@ -33,18 +33,22 @@ if (!empty($_POST["supprimer"]) && !empty($_POST["idinput"])) {
 </head>
 
 <body>
+
+
+
+
     <div>
         <div>
-            <h4>nom</h4>
+            <h4><?php echo $_SESSION["nom"] ?></h4>
         </div>
         <div>
-            <h4>prenom</h4>
+            <h4><?php echo $_SESSION["prenom"] ?></h4>
         </div>
         <div>
-            <h4>email</h4>
+            <h4><?php echo $_SESSION["email"] ?></h4>
         </div>
         <div>
-            <h4>date_de_naissance</h4>
+            <h4><?php echo $_SESSION["date_de_naissance"] ?></h4>
         </div>
     </div>
 
@@ -78,25 +82,29 @@ if (!empty($_POST["supprimer"]) && !empty($_POST["idinput"])) {
 
         <div>
             <div>
-                <?php foreach ($vaccins as $vaccin) { ?>
-                    <table>
-                        <tr>
-                            <td>
+                <?php
 
-                                <p> <?php echo $vaccin['nom']; ?></p>
-                                <p> <?php echo $vaccin['date']; ?></p>
-                                <a href="#">Modifier</a>
-                                <form action="" method="POST">
-                                    <input type="text" name="idinput" hidden value="<?php echo $vaccin['id'] ?>">
-                                    <input type="submit" name="supprimer" value="Supprimer">
-                                </form>
+                foreach ($vaccins as $vaccin) {
+                    if ($_SESSION['id'] == $vaccin['utilisateur_id']) { ?>
+                        <table>
+                            <tr>
+                                <td>
+
+                                    <p> <?php echo $vaccin['nomvaccin']; ?></p>
+                                    <p> <?php echo $vaccin['date']; ?></p>
+                                    <a href="#">Modifier</a>
+                                    <form action="" method="POST">
+                                        <input type="text" name="idinput" hidden value="<?php echo $vaccin['idvaccin'] ?>">
+                                        <input type="submit" class="delete" name="supprimer" value="Supprimer">
+                                    </form>
 
 
-                            </td>
-                        </tr>
-                    </table>
+                                </td>
+                            </tr>
+                        </table>
 
                 <?php
+                    }
                 }
                 ?>
 

@@ -10,7 +10,7 @@
 
 <body>
     <header>
-      <a href="accueil.php"> <img src="vaccina logo.png" alt="logo"></a> 
+        <img src="vaccina logo.png" alt="logo">
 
     </header>
 </body>

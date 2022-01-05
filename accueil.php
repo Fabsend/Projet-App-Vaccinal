@@ -35,6 +35,13 @@
                 <input type="submit" value="Valider" class="valider"> <br>
                 <p> Vous n'avez pas un compte ? <a href="#">Créer un compte</a>
                 </p>
+            <form action="" method="POST">
+                <h1>Connexion</h1>
+                <input type="mail" name="email" placeholder="Adresse Mail" class="connex"> <br>
+                <input type="password" name="password" placeholder="Mot de passe" class="connex"><br>
+                <input type="submit" value="Valider" class="valider"> <br>
+                Vous n'avez pas un compte ? <a href="inscription.php">Créer un compte</a>
+
             </form>
         </div>
     </section>
