@@ -26,6 +26,7 @@
         </form>
     </div>
     <?php
+    session_start();
     $pdo = new PDO('mysql:host=localhost;dbname=mon_carnet', "root", "root");
     if (!empty($_POST)) {
         if (empty($_POST["nom"]) || empty($_POST["prenom"]) || empty($_POST["date"]) || empty($_POST["email"]) || empty($_POST["mdp"])) {
@@ -39,13 +40,20 @@
             $role = "user";
             $ver = $pdo->prepare("SELECT * FROM utilisateur WHERE email='$email'");
             $ver->execute();
-            $user = $ver->fetch();
-            if ($user) {
+            $users = $ver->fetch();
+            $id=$users['id'];
+            if ($users) {
                 echo ("L'adresse email est déjà utilisée!");
             } else {
                 $req = $pdo->prepare("INSERT INTO utilisateur (nom, prenom, date_de_naissance, email, password, role) VALUES ('$nom', '$prenom', '$date', '$email', '$mdp', '$role')");
                 $req->execute();
-                echo ("Le compte a bien été créée!");
+                $_SESSION['connected']=true;
+                $_SESSION['nom']=$nom;
+                $_SESSION['prenom']=$prenom;
+                $_SESSION['date_de_naissance']=$date;
+                $_SESSION['email']=$email;
+                $_SESSION['password']=$mdp;
+                header('Location: accueil.php');
             }
         }
     }
