@@ -27,6 +27,7 @@ if (!empty($_POST["email"]) && !empty($_POST["password"])) {
         header('Location: carnet.php');
     } else 
     if (!empty($users) && $users['role'] == 'admin') {
+        $_SESSION["id"] = $users["id"];
         header('Location: pageadmin.php');
     } else {
         $message_erreur = true;
@@ -35,8 +36,6 @@ if (!empty($_POST["email"]) && !empty($_POST["password"])) {
     $message_erreur = false;
 }
 ?>
-
-
 
 
 <!DOCTYPE html>
@@ -69,18 +68,17 @@ if (!empty($_POST["email"]) && !empty($_POST["password"])) {
 
         <div>
 
-
             <form action="" method="POST">
                 <h1>Connexion</h1>
                 <input type="mail" name="email" placeholder="Adresse Mail" class="connex"> <br>
                 <input type="password" name="password" placeholder="Mot de passe" class="connex"><br>
-                <input type="submit" value="Valider" class="valider"> <br>
+                <input type="submit" value="Valider" class="valider"><br>
                 <?php
                 if ($message_erreur == true) {
-                    echo "<p class='message_erreur'>Utilisateur ou Mot de passe inconnu!</p>";
+                    echo "<p class='message_erreur'>Utilisateur ou Mot de passe inconnu</p>";
                 } ?>
-                <p> Vous n'avez pas un compte ? <a href="inscription.php">Créer un compte</a>
-                </p>
+                Vous n'avez pas un compte ? <a href="inscription.php">Créer un compte</a>
+
             </form>
         </div>
     </section>
