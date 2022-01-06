@@ -19,7 +19,7 @@
             <h3>Contact :</h3><br>
             <ul>
 
-                <li><img src="SM_icons/facebook.png" href="https://www.instagram.com/vaccina_mon_carnet/" alt="fb"><br> Facebook</li>
+                <li><img src="SM_icons/facebook.png" alt="fb"><br> Facebook</li>
                 <li><img src="SM_icons/instagram.png" alt="in"><br> Instagram</li>
                 <li><img src="SM_icons/linkedin.png" alt="lnk"><br> Linkedin</li>
                 <li><img src="SM_icons/twitter.png" alt="tr"><br> Twitter</li>
