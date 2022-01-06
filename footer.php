@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="footer.css">
     <title>header</title>
 </head>
 
@@ -18,7 +19,7 @@
             <h3>Contact :</h3><br>
             <ul>
 
-                <li><img src="SM_icons/facebook.png" alt="fb"><br> Facebook</li>
+                <li><img src="SM_icons/facebook.png" href="https://www.instagram.com/vaccina_mon_carnet/" alt="fb"><br> Facebook</li>
                 <li><img src="SM_icons/instagram.png" alt="in"><br> Instagram</li>
                 <li><img src="SM_icons/linkedin.png" alt="lnk"><br> Linkedin</li>
                 <li><img src="SM_icons/twitter.png" alt="tr"><br> Twitter</li>
