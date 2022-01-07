@@ -1,5 +1,5 @@
 <?php
-$pdo = new PDO('mysql:host=localhost;dbname=mon_carnet',"root", "root");
+$pdo = new PDO('mysql:host=localhost;dbname=mon_carnet', "root", "root");
 session_start();
 
 
@@ -53,7 +53,7 @@ if (!empty($_POST["email"]) && !empty($_POST["password"])) {
 
 <body>
     <?php
-    include("header.php") ?>
+    include("headeraccueil.php") ?>
     <section>
 
         <div class="paragraph">
