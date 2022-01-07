@@ -9,12 +9,10 @@ $requesttypevaccin->execute(); //Executer
 $vaccinstype = $requesttypevaccin->fetchAll();
 
 session_start();
-
 if (!empty($_POST["nom"]) && !empty($_POST["date"])) {
     $nom = $_POST["nom"];
     $date = $_POST["date"];
-    $id = $_SESSION["id"];
-
+    $id = $_SESSION['id'];
 
 
 
@@ -62,8 +60,12 @@ if (!empty($_POST['supprimer_x']) && !empty($_POST["idinput"])) {
 
             <h4 title="E-MAIL"><?php echo $_SESSION["email"] ?></h4>
 
+<<<<<<< HEAD
+            <h4><?php echo $_SESSION["date_de_naissance"] ?></h4>
+=======
             <h4 title="DATE DE NAISSANCE"><?php echo $_SESSION["date_de_naissance"] ?></h4>
 
+>>>>>>> 6adb330fdc9a27b37a6bd6b0438250fda6b7dbb1
         </div>
 
         <div class="vaccin">
