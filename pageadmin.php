@@ -47,24 +47,25 @@ if (!empty($_POST['user']) && ($_POST['role'] == "admin")) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylepageadmin.css">
     <link rel="stylesheet" href="header.css">
-    <link rel="stylesheet" href="footer.css">
 
     <title>Document</title>
 </head>
 
 <body>
     <?php include("header.php") ?>
-    <div class="recherche">
-        <h1>MODE ADMIN</h1>
+    <div class="admin">
+        <div class="recherche">
+            <h1>MODE ADMIN</h1>
 
-        <div class="searchbar">
+            <div class="searchbar">
 
-            <h2>Recherche utilisateur</h2>
-            <form action="" method="POST" class="searchinput">
-                <input class="barrerecherche" type="text" name="search" value="" />
-                <input class="submit" type="submit" value=" rechercher" />
+                <h2>Recherche utilisateur</h2>
+                <form action="" method="POST" class="searchinput">
+                    <input class="barrerecherche" type="text" name="search" value="" />
+                    <input class="submit" type="submit" value=" rechercher" />
 
-            </form>
+                </form>
+            </div>
         </div>
         <div class="user">
             <table>
@@ -99,11 +100,16 @@ if (!empty($_POST['user']) && ($_POST['role'] == "admin")) {
                                 </form>
                             </td>
 
+
                     <?php }
                     } ?>
+                </tr>
+            </table>
         </div>
     </div>
+
     <?php include("footer.php") ?>
+
 </body>
 
 </html>

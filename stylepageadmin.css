@@ -1,10 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 
-footer {
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-}
 
 td {
   display: flex;
@@ -23,6 +18,7 @@ h2 {
 }
 .recherche {
   text-align: center;
+  height: 100%;
 }
 
 .barrerecherche {
@@ -31,9 +27,11 @@ h2 {
 }
 
 .user {
-  display: flex;
+  display: flex; 
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 20px; 
+  height: 250px;
+  overflow: auto;
 }
 
 .nom_user {
@@ -58,4 +56,29 @@ h2 {
 .option_user {
   display: flex;
   margin-left: 15px;
+}
+
+
+
+@media (max-width: 600px) {
+
+td{
+  flex-direction: column;
+}
+
+.submit{
+  width: auto;
+  padding: 2px;
+  height: 30px;
+  margin-right: 10px;
+  font-size: 12px;
+}
+
+.option_user{
+  align-items: center;
+}
+.barrerecherche {
+  height: 20px;
+  font-size: 20px;
+}
 }
