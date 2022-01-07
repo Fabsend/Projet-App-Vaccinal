@@ -1,62 +1,64 @@
-    @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
-    * {
-        margin: 0;
-        padding: 0;
-    }
-    
-    body {
-        font-family: "Montserrat", sans-serif;
-    }
-    
-    a {
-        text-decoration: none;
-    }
-    
-    header {
-        width: 100%;
-        height: 100px;
-        background-color: #4472c4;
-        display: flex;
-        justify-content: space-between;
-    }
-    
-    button {
-        margin: 25px;
-        padding: 10px 25px;
-        background-color: red;
-        color: #fff;
-        border: 1px solid black;
-        border-radius: 10px;
-    }
-    
-    button:hover {
-        background-color: #ee3838;
-    }
-    
-    @media(max-width: 600px) {
-        button {
-            margin: 15px;
-            padding: 5px 10px;
-            background-color: red;
-            color: #fff;
-            border: 1px solid black;
-            border-radius: 10px;
-        }
-    }
-    
-    header img {
-        width: 250px;
-        margin: 0 auto;
-    }
-    
-    section {
-        width: 90%;
-        display: flex;
-        justify-content: space-around;
-        flex-direction: row;
-        margin: 180px auto 0 auto;
-    }
-    
-    section img {
-        margin-top: 100px;
-    }
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  width: 100%;
+  height: 100px;
+  background-color: #4472c4;
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  margin: 25px;
+  padding: 10px 25px;
+  background-color: red;
+  color: #fff;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+button:hover {
+  background-color: #ee3838;
+}
+button a {
+  color: white;
+}
+@media (max-width: 600px) {
+  button {
+    margin: 15px;
+    padding: 5px 10px;
+    background-color: red;
+    color: #fff;
+    border: 1px solid black;
+    border-radius: 10px;
+  }
+}
+
+header img {
+  width: 250px;
+  margin: 0 auto;
+}
+
+section {
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  margin: 180px auto 0 auto;
+}
+
+section img {
+  margin-top: 100px;
+}
