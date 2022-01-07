@@ -1,3 +1,8 @@
+<?php 
+$id = $_SESSION["id"]; 
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +22,7 @@
             <a href="carnet.php"><img src="vaccina logo.png" alt="logo"></a>
         </div>
         <div>
-            <button class="profil"><a href="profil.php">Profil</a></button>
+            <button class="profil"><a href="profil.php?id=<?php echo $id ?>">Profil</a></button>
             <button><a href="Deconnection.php">Déconnexion</a></button>
         </div>
 
