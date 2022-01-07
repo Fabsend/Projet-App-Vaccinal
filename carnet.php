@@ -1,7 +1,12 @@
-<?php $pdo = new PDO('mysql:host=localhost;dbname=mon_carnet',  "root");
+<?php $pdo = new PDO('mysql:host=localhost;dbname=mon_carnet', "root", "root");
 $requestvaccin = $pdo->prepare("SELECT * FROM `vaccin` JOIN utilisateur ON vaccin.utilisateur_id=utilisateur.id"); //Préparer
 $requestvaccin->execute(); //Executer 
 $vaccins = $requestvaccin->fetchAll();
+
+
+$requesttypevaccin = $pdo->prepare("SELECT * FROM `type_vaccin`"); //Préparer
+$requesttypevaccin->execute(); //Executer 
+$vaccinstype = $requesttypevaccin->fetchAll();
 
 session_start();
 if (!empty($_POST["nom"]) && !empty($_POST["date"])) {
@@ -69,20 +74,11 @@ if (!empty($_POST['supprimer_x']) && !empty($_POST["idinput"])) {
                     <span class="fleche"></span>
                     <select name="nom" class="contour">
                         <option value="">Type de Vaccin</option>
-                        <option value="Covid-19 BioNTech/Pfizer">Covid-19 BioNTech/Pfizer</option>
-                        <option value="Covid-19 Moderna">Covid-19 Moderna</option>
-                        <option value="Covid-19 AstraZeneca">Covid-19 AstraZeneca</option>
-                        <option value="Covid-19 Johnson&Johnson">Covid-19 Johnson&Johnson</option>
-                        <option value="Coqueluche DTCaPolio">Coqueluche DTCaPolio</option>
-                        <option value="Rougeole/Rubéole/Oreillons Priorix">Rougeole/ Rubéole / Oreillons Priorix</option>
-                        <option value="Rougeole/Rubéole/Oreillons Rvaxpro">Rougeole/ Rubéole / Oreillons Rvaxpro</option>
-                        <option value="Hépatite B">Hépatite B</option>
-                        <option value="Pneumocoque Prevenar 13">Pneumocoque Prevenar 13</option>
-                        <option value="Pneumocoque Pneumovax ">Pneumocoque Pneumovax </option>
-                        <option value="Méningocoque C Menjugate">Méningocoque C Menjugate</option>
-                        <option value="Méningocoque C Neisvac">Méningocoque C Neisvac</option>
-                        <option value="Méningocoque C Menveo">Méningocoque C Menveo</option>
-                        <option value="Haemophilus Hexyon">Haemophilus Hexyon</option>
+                        <?php foreach ($vaccinstype as $vaccintype) { ?>
+                            <option value="<?php echo $vaccintype["nom_vaccin"]; ?>"><?php echo $vaccintype["nom_vaccin"]; ?></option>
+
+                        <?php } ?>
+
                     </select>
                 </div>
 
