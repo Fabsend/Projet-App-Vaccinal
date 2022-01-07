@@ -123,14 +123,6 @@ section img {
     }
 }
 
-.message_erreur {
-    color: red;
-    background-color: #fff;
-    border-radius: 5px;
-    width: 70%;
-    margin: 0 auto;
-}
-
 
 /*-------form------*/
 
@@ -181,6 +173,80 @@ input {
         padding: 15px;
         border-radius: 5px;
         box-sizing: border-box;
+    }
+}
+
+
+/*-----------footer-------------*/
+
+footer {
+    width: 100%;
+    background-color: #4472c4;
+    display: flex;
+    justify-content: space-between;
+    height: auto;
+    color: #fff;
+}
+
+.contact {
+    text-align: center;
+    margin: 20px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+}
+
+.contact img {
+    width: 40px;
+    margin: 5px 25px;
+}
+
+
+/*---------infos---------*/
+
+.infos {
+    margin-top: 30px;
+    margin-right: 200px;
+    padding: 10px;
+}
+
+.infos li {
+    list-style-type: none;
+    padding: 10px;
+}
+
+.infos li a {
+    color: #fff;
+}
+
+.infos li:hover {
+    background-color: #41bbbb;
+}
+
+
+/*-------------resposive--------------*/
+
+@media(max-width:600px) {
+    footer {
+        flex-direction: column;
+    }
+    .contact {
+        font-size: 13px;
+        margin: 7px;
+        margin: 10px auto;
+    }
+    .contact img {
+        width: 30px;
+    }
+    .infos {
+        margin: 10px auto;
+        text-align: center;
     }
 }
 
