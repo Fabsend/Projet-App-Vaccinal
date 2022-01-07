@@ -1,59 +1,62 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 * {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 header {
-  width: 100%;
-  height: 100px;
-  background-color: #4472c4;
-  display: flex;
-  justify-content: space-between;
+    width: 100%;
+    height: 100px;
+    background-color: #4472c4;
+    display: flex;
+    justify-content: space-between;
 }
 
 button {
-  margin: 30px 10px 0 0;
-  padding: 10px 25px;
-  background-color: red;
-  color: #fff;
-  border: 1px solid black;
-  border-radius: 10px;
-}
-
-button:hover {
-  background-color: #ee3838;
-}
-button a {
-  color: white;
-}
-@media (max-width: 600px) {
-  button {
-    padding: 4px 10px;
+    margin: 30px 10px 0 0;
+    padding: 10px 25px;
     background-color: red;
     color: #fff;
     border: 1px solid black;
     border-radius: 10px;
-  }
+}
+
+button:hover {
+    background-color: #ff5c5c;
+}
+
+button a {
+    color: white;
+}
+
+@media (max-width: 600px) {
+    button {
+        padding: 4px 10px;
+        background-color: red;
+        color: #fff;
+        border: 1px solid black;
+        border-radius: 10px;
+    }
 }
 
 header img {
-  width: 250px;
-  margin: 0 auto;
+    width: 250px;
+    margin: 0 auto;
 }
 
 .profil {
-  margin-left: auto;
-  background-color: green;
+    margin-left: auto;
+    background-color: green;
 }
+
 .profil:hover {
-  background-color: #07d407;
+    background-color: #07d407;
 }
