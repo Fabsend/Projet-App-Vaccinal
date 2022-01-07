@@ -65,7 +65,7 @@ if (!empty($_POST["ajouter_modif"])) {
                     <div class="option-vaccin">
                         <form action="" method="POST">
                             <input type="text" name="idinput" hidden value="<?php echo $vaccintype['id'] ?>">
-                            <input type="submit" class="modif" name="modifier" src="SM_icons/modify.png">
+                            <input type="image" class="modif" name="modifier" src="SM_icons/modify.png">
                             <input type="image" class="delete" name="supprimer" src="SM_icons/trash.png">
                         </form>
                     </div>
@@ -76,7 +76,7 @@ if (!empty($_POST["ajouter_modif"])) {
     </div>
     <?php
 
-    if (!empty($_POST['modifier']) && !empty($_POST["idinput"])) {
+    if (!empty($_POST['modifier_x']) && !empty($_POST["idinput"])) {
         $idinput = $_POST["idinput"];
 
         $requestvaccinmodif = $pdo->prepare("SELECT * FROM `type_vaccin` WHERE id = '$idinput'");
