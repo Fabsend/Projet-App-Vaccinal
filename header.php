@@ -12,10 +12,14 @@
 
 <body>
     <header>
+        <div>
 
-        <a href="carnet.php"><img src="vaccina logo.png" alt="logo"></a>
-
-        <button><a href="Deconnection.php">Déconnexion</a></button>
+            <a href="carnet.php"><img src="vaccina logo.png" alt="logo"></a>
+        </div>
+        <div>
+            <button class="profil"><a href="profil.php">Profil</a></button>
+            <button><a href="Deconnection.php">Déconnexion</a></button>
+        </div>
 
     </header>
 </body>

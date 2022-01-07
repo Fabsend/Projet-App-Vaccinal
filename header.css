@@ -21,7 +21,7 @@ header {
 }
 
 button {
-  margin: 25px;
+  margin: 30px 10px 0 0;
   padding: 10px 25px;
   background-color: red;
   color: #fff;
@@ -37,8 +37,7 @@ button a {
 }
 @media (max-width: 600px) {
   button {
-    margin: 15px;
-    padding: 5px 10px;
+    padding: 4px 10px;
     background-color: red;
     color: #fff;
     border: 1px solid black;
@@ -51,14 +50,10 @@ header img {
   margin: 0 auto;
 }
 
-section {
-  width: 90%;
-  display: flex;
-  justify-content: space-around;
-  flex-direction: row;
-  margin: 180px auto 0 auto;
+.profil {
+  margin-left: auto;
+  background-color: green;
 }
-
-section img {
-  margin-top: 100px;
+.profil:hover {
+  background-color: #07d407;
 }
