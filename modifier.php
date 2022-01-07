@@ -15,8 +15,9 @@
     <?php
     include("header.php") ?>
     <section class="main">
-       
-        <form action="" method="POST"> <h2>Modifiez le vaccin sur votre carnet</h2><br>
+
+        <form action="#" method="POST">
+            <h2>Modifiez le vaccin sur votre carnet</h2><br>
             <label for="date">Type du Vaccin</label>
 
             <select name="nom">
