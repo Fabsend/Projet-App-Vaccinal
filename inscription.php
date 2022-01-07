@@ -13,7 +13,7 @@
 
 <body>
     <?php
-    include("header.php")
+    include("headeraccueil.php")
     ?>
     <div class="main-div">
         <div class="insc-img">
@@ -59,7 +59,7 @@
     ?>
     <?php
     session_start();
-    $pdo = new PDO('mysql:host=localhost;dbname=mon_carnet', "root", "root");
+    $pdo = new PDO('mysql:host=localhost;dbname=mon_carnet', "root");
     if (!empty($_POST)) {
         if (empty($_POST["nom"]) || empty($_POST["prenom"]) || empty($_POST["date"]) || empty($_POST["email"]) || empty($_POST["mdp"])) {
             echo ("Tous les champs ne sont pas remplis!!!");

@@ -85,7 +85,7 @@ select {
 }
 
 .submit:hover {
-    opacity: 60%;
+    background-color: #07d407;
     transition: 0.2s;
 }
 
