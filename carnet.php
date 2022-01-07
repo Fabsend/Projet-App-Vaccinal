@@ -1,4 +1,4 @@
-<?php $pdo = new PDO('mysql:host=localhost;dbname=mon_carnet', "root", "root");
+<?php $pdo = new PDO('mysql:host=localhost;dbname=mon_carnet',  "root");
 $requestvaccin = $pdo->prepare("SELECT * FROM `vaccin` JOIN utilisateur ON vaccin.utilisateur_id=utilisateur.id"); //Préparer
 $requestvaccin->execute(); //Executer 
 $vaccins = $requestvaccin->fetchAll();
@@ -49,15 +49,15 @@ if (!empty($_POST['supprimer_x']) && !empty($_POST["idinput"])) {
     <div class="carnet">
         <div class="infoperso">
 
-            <h4><?php echo $_SESSION["nom"] ?></h4>
+            <h4 title="NOM"><?php echo $_SESSION["nom"] ?></h4>
 
 
-            <h4><?php echo $_SESSION["prenom"] ?></h4>
+            <h4 title="PRENOM"><?php echo $_SESSION["prenom"] ?></h4>
 
 
-            <h4><?php echo $_SESSION["email"] ?></h4>
+            <h4 title="E-MAIL"><?php echo $_SESSION["email"] ?></h4>
 
-            <h4><?php echo $_SESSION["date_de_naissance"] ?></h4>
+            <h4 title="DATE DE NAISSANCE"><?php echo $_SESSION["date_de_naissance"] ?></h4>
 
         </div>
 
@@ -72,8 +72,8 @@ if (!empty($_POST['supprimer_x']) && !empty($_POST["idinput"])) {
                         <option value="Covid-19 AstraZeneca">Covid-19 AstraZeneca</option>
                         <option value="Covid-19 Johnson&Johnson">Covid-19 Johnson&Johnson</option>
                         <option value="Coqueluche DTCaPolio">Coqueluche DTCaPolio</option>
-                        <option value="Rougeole/Rubéole/Oreillons Priorix">Rougeole/Rubéole/Oreillons Priorix</option>
-                        <option value="Rougeole/Rubéole/Oreillons Rvaxpro">Rougeole/Rubéole/Oreillons Rvaxpro</option>
+                        <option value="Rougeole/Rubéole/Oreillons Priorix">Rougeole/ Rubéole / Oreillons Priorix</option>
+                        <option value="Rougeole/Rubéole/Oreillons Rvaxpro">Rougeole/ Rubéole / Oreillons Rvaxpro</option>
                         <option value="Hépatite B">Hépatite B</option>
                         <option value="Pneumocoque Prevenar 13">Pneumocoque Prevenar 13</option>
                         <option value="Pneumocoque Pneumovax ">Pneumocoque Pneumovax </option>
@@ -84,11 +84,12 @@ if (!empty($_POST['supprimer_x']) && !empty($_POST["idinput"])) {
                     </select>
                 </div>
 
-                <div class="datevaccin contour">
-                    <p>Date du vaccin</p>
-                    <input type="date" name="date" value="date du vaccin">
+                <div class="datevaccin  contour">
+
+                    <input type="date" name="date" value="date du vaccin" title="Date du vaccin">
                 </div>
-                <input type="submit" class=" submit contour" value="Ajouter">
+
+                <input type="submit" class=" submit contour ajouter" value="Ajouter">
 
             </form>
 
@@ -108,7 +109,7 @@ if (!empty($_POST['supprimer_x']) && !empty($_POST["idinput"])) {
                                         </div>
                                         <div class="option-vaccin">
                                             <div class="button">
-                                                <?php echo ("<a href='modifier.php?nomvaccin=" . $vaccin['nomvaccin'] . "&date=" . $vaccin['date'] . "&id=" . $vaccin['idvaccin'] . "'><img src='SM_icons/modify.png'/></a>"); ?>
+                                                <?php echo ("<a href='modifier.php?nomvaccin=" . $vaccin['nomvaccin'] . "&date=" . $vaccin['date'] . "&id=" . $vaccin['idvaccin'] . "'><img  src='SM_icons/modify.png'/></a>"); ?>
                                             </div>
 
                                             <form action="" method="POST">
