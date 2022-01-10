@@ -40,7 +40,7 @@ if (!empty($_POST)) {
 <body>
     <?php
     include("header.php") ?>
-    <h2>Modifiez votre profil</h2><br>
+    <h2>Modifiez le profil de votre carnet </h2><br>
     <form action="#" method="POST">
 
         <label for="prenom">Nom:</label>
