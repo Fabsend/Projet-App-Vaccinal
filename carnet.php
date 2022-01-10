@@ -11,6 +11,11 @@ $requesttypevaccin->execute(); //Executer
 $vaccinstype = $requesttypevaccin->fetchAll();
 
 session_start();
+$id = $_SESSION['id'];
+$reqprofil = $pdo->prepare("SELECT * FROM utilisateur WHERE `id` = '$id'"); //Préparer
+$reqprofil->execute(); //Executer 
+$affprofil = $reqprofil->fetchAll();
+
 if (!empty($_POST["nom"]) && !empty($_POST["date"])) {
     $nom = $_POST["nom"];
     $date = $_POST["date"];
@@ -20,6 +25,15 @@ if (!empty($_POST["nom"]) && !empty($_POST["date"])) {
 
     $insertvaccin = $pdo->prepare("INSERT INTO vaccin (nomvaccin,date,utilisateur_id) VALUES ('$nom','$date','$id')");
     $insertvaccin->execute();
+
+    $today = new DateTime();
+    $aujourdhui = $today->format('Y-m-d');
+
+    if ($aujourdhui < $date) {
+
+        include("mail.php");
+    }
+
     header('Location: carnet.php');
 }
 if (!empty($_POST['supprimer_x']) && !empty($_POST["idinput"])) {
@@ -30,10 +44,8 @@ if (!empty($_POST['supprimer_x']) && !empty($_POST["idinput"])) {
     $suppvaccin->execute();
     header('Location: carnet.php');
 }
-$id = $_SESSION['id'];
-$reqprofil = $pdo->prepare("SELECT * FROM utilisateur WHERE `id` = '$id'"); //Préparer
-$reqprofil->execute(); //Executer 
-$affprofil = $reqprofil->fetchAll();
+
+
 
 
 ?>
