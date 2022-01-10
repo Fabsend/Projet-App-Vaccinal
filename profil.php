@@ -1,7 +1,8 @@
 <?php
 $pdo = new PDO('mysql:host=localhost;dbname=mon_carnet', "root", "root");
 session_start();
-$recu_info = $pdo->prepare("SELECT * FROM utilisateur WHERE id=" . $_SESSION['id']);
+$id = $_SESSION['id'];
+$recu_info = $pdo->prepare("SELECT * FROM utilisateur WHERE id = $id");
 $recu_info->execute();
 $recu_info = $recu_info->fetch();
 ?>
@@ -41,14 +42,14 @@ if (!empty($_POST)) {
     <h2>Modifiez votre profil</h2><br>
     <form action="#" method="POST">
 
-        <label for="prenom">Prénom:</label>
-        <input type="prenom" name="prenom" value="<?php
-                                                    echo ($recu_info['prenom']);
-                                                    ?>">
-
         <label for="prenom">Nom:</label>
         <input type="nom" name="nom" value="<?php
-                                            echo ($recu_info['nom']);
+                                                    echo ($recu_info['nom']);
+                                                    ?>">
+
+        <label for="prenom">Prénom:</label>
+        <input type="prenom" name="prenom" value="<?php
+                                            echo ($recu_info['prenom']);
                                             ?>">
 
 

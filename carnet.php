@@ -1,4 +1,13 @@
-<?php $pdo = new PDO('mysql:host=localhost;dbname=mon_carnet', "root", "root");
+<?php 
+
+function debug($tableau)
+{
+    echo '<pre style="height:200px;overflow: scroll; font-size: .8em;padding: 10px;font-family: Consolas, Monospace; background-color: #000;color:#fff;">';
+    print_r($tableau);
+    echo '</pre>';
+}
+
+$pdo = new PDO('mysql:host=localhost;dbname=mon_carnet', "root", "root");
 $requestvaccin = $pdo->prepare("SELECT * FROM `vaccin` JOIN utilisateur ON vaccin.utilisateur_id=utilisateur.id"); //Préparer
 $requestvaccin->execute(); //Executer 
 $vaccins = $requestvaccin->fetchAll();
@@ -28,6 +37,11 @@ if (!empty($_POST['supprimer_x']) && !empty($_POST["idinput"])) {
     $suppvaccin->execute();
     header('Location: carnet.php');
 }
+$id = $_SESSION['id'];
+$reqprofil = $pdo->prepare("SELECT * FROM utilisateur WHERE `id` = '$id'"); //Préparer
+$reqprofil->execute(); //Executer 
+$affprofil = $reqprofil->fetchAll();
+debug($affprofil);
 
 ?>
 
@@ -52,20 +66,16 @@ if (!empty($_POST['supprimer_x']) && !empty($_POST["idinput"])) {
     <div class="carnet">
         <div class="infoperso">
 
-            <h4 title="NOM"><?php echo $_SESSION["nom"] ?></h4>
+            <h4 title="NOM"><?php echo $affprofil[0]["nom"] ?></h4>
 
 
-            <h4 title="PRENOM"><?php echo $_SESSION["prenom"] ?></h4>
+            <h4 title="PRENOM"><?php echo $affprofil[0]["prenom"] ?></h4>
 
 
-            <h4 title="E-MAIL"><?php echo $_SESSION["email"] ?></h4>
+            <h4 title="E-MAIL"><?php echo $affprofil[0]["email"] ?></h4>
 
-<<<<<<< HEAD
-            <h4><?php echo $_SESSION["date_de_naissance"] ?></h4>
-=======
-            <h4 title="DATE DE NAISSANCE"><?php echo $_SESSION["date_de_naissance"] ?></h4>
+            <h4 title="DATE DE NAISSANCE"><?php echo $affprofil[0]["date_de_naissance"] ?></h4>
 
->>>>>>> 6adb330fdc9a27b37a6bd6b0438250fda6b7dbb1
         </div>
 
         <div class="vaccin">
