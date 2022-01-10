@@ -16,8 +16,9 @@ if (!empty($_POST)) {
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
     $email = $_POST['email'];
+    $password = $_POST['password'];
     $id = $_SESSION["id"];
-    $req = $pdo->prepare("UPDATE `utilisateur` SET `nom` = '$nom', `prenom` = '$prenom', `email` = '$email' WHERE `utilisateur`.`id` = '$id' ");
+    $req = $pdo->prepare("UPDATE `utilisateur` SET `nom` = '$nom', `prenom` = '$prenom', `email` = '$email', `password` = '$password' WHERE `utilisateur`.`id` = '$id' ");
     $req->execute();
     header('Location: carnet.php');
 }
@@ -56,6 +57,11 @@ if (!empty($_POST)) {
         <input type="email" name="email" value="<?php
                                                     echo ($recu_info['email']);
                                                     ?>">
+                                                    <label for="prenom">adresse e-mail:</label>
+        <input type="text" name="password" value="<?php
+                                                    echo ($recu_info['password']);
+                                                    ?>">
+
 
         <input class="submit-button" type="submit" value="Modifier">
 
