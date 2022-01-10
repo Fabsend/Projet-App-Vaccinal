@@ -1,4 +1,4 @@
-<?php $pdo = new PDO('mysql:host=localhost;dbname=mon_carnet', "root", "root");
+<?php $pdo = new PDO('mysql:host=localhost;dbname=mon_carnet', "root");
 $requestvaccintype = $pdo->prepare("SELECT * FROM `type_vaccin`"); //Préparer
 $requestvaccintype->execute(); //Executer 
 $vaccinstype = $requestvaccintype->fetchAll();
@@ -40,58 +40,74 @@ if (!empty($_POST["ajouter_modif"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="gestion.css">
     <title>Document</title>
 </head>
 
 <body>
     <?php include("header.php") ?>
+    <section class="main">
+        <div class="vaccin">
+            <form action="" method="POST" class="ajoutvaccin">
+                <p>Ajouter du vaccin</p>
+                <input type="text" name="nom">
+                <input type="submit" class=" submit contour" value="Ajouter">
 
-    <div class="vaccin">
-        <form action="" method="POST" class="ajoutvaccin">
-            <p>Nom du vaccin</p>
-            <input type="text" name="nom">
-            <input type="submit" class=" submit contour" value="Ajouter">
-
-        </form>
-    </div>
+            </form>
+        </div>
 
 
-    <h1>Gestion des Vaccins</h1>
-    <div class="tableau">
+        <?php
 
-        <?php foreach ($vaccinstype as $vaccintype) { ?>
-            <table>
-                <tr><?php echo $vaccintype["nom_vaccin"] ?>
-                    <div class="option-vaccin">
-                        <form action="" method="POST">
-                            <input type="text" name="idinput" hidden value="<?php echo $vaccintype['id'] ?>">
-                            <input type="image" class="modif" name="modifier" src="SM_icons/modify.png">
-                            <input type="image" class="delete" name="supprimer" src="SM_icons/trash.png">
-                        </form>
-                    </div>
-                </tr>
-            </table>
+        if (!empty($_POST['modifier_x']) && !empty($_POST["idinput"])) {
+            $idinput = $_POST["idinput"];
+
+            $requestvaccinmodif = $pdo->prepare("SELECT * FROM `type_vaccin` WHERE id = '$idinput'");
+            $requestvaccinmodif->execute();
+            $vaccinmodif = $requestvaccinmodif->fetch();
+        ?><div class="vaccin">
+                <form action="" method="POST">
+                    <p>Modifez le vaccin</p>
+                    <input class="modifier" type="text" name="nom_modif" value="<?php echo $vaccinmodif['nom_vaccin'] ?>">
+                    <input type="text" name="idinputmodif" hidden value="<?php echo $vaccinmodif['id'] ?>">
+                    <input class=" submit" type="submit" name="ajouter_modif" value=" Modifier">
+                </form>
+            </div>
+
 
         <?php } ?>
-    </div>
-    <?php
+        <div class="tableau">
+            <h1>Gestion des Vaccins</h1>
+            <div class="tableau-scroll">
+                <?php foreach ($vaccinstype as $vaccintype) { ?>
+                    <table>
+                        <tr>
+                            <div class="option-vaccin">
+                                <form action="" method="POST"><?php echo $vaccintype["nom_vaccin"] ?>
+                                    <div>
+                                        <input type="text" name="idinput" hidden value="<?php echo  $vaccintype['id'] ?>">
+                                    </div>
+                                    <div>
+                                        <input type="image" class="modif" name="modifier" src="SM_icons/modify.png">
+                                        <input type="image" class="delete" name="supprimer" src="SM_icons/trash.png">
+                                    </div>
+                                </form>
+                            </div>
+                        </tr>
+                    </table>
 
-    if (!empty($_POST['modifier_x']) && !empty($_POST["idinput"])) {
-        $idinput = $_POST["idinput"];
-
-        $requestvaccinmodif = $pdo->prepare("SELECT * FROM `type_vaccin` WHERE id = '$idinput'");
-        $requestvaccinmodif->execute();
-        $vaccinmodif = $requestvaccinmodif->fetch();
-    ?>
-        <form action="" method="POST">
-            <input class="modifier" type="text" name="nom_modif" value="<?php echo $vaccinmodif['nom_vaccin'] ?>">
-            <input type="text" name="idinputmodif" hidden value="<?php echo $vaccinmodif['id'] ?>">
-            <input class=" submit" type="submit" name="ajouter_modif" value=" Ajouter">
-        </form>
-
-    <?php } ?>
+                <?php } ?>
+            </div>
+        </div>
 
 
+
+
+
+
+
+
+    </section>
 
     <?php include("footer.php") ?>
 </body>
