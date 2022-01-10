@@ -52,7 +52,7 @@ if (!empty($_POST['user']) && ($_POST['role'] == "admin")) {
 </head>
 
 <body>
-    <?php include("header.php") ?>
+    <?php include("headeradmin.php") ?>
     <div class="admin">
         <div class="recherche">
             <h1>MODE ADMIN</h1>

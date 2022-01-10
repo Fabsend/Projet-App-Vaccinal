@@ -54,9 +54,17 @@ header img {
 
 .profil {
   margin-left: auto;
-  background-color: green;
+  background-color: #ceba05;
 }
 
 .profil:hover {
-  background-color: #07d407;
+  background-color: #e4cf15;
+}
+.gestionuser {
+  margin-left: auto;
+  background-color: #0dc57e;
+}
+
+.gestionuser:hover {
+  background-color: #25a373;
 }
