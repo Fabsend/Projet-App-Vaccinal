@@ -1,4 +1,6 @@
-<?php $pdo = new PDO('mysql:host=localhost;dbname=mon_carnet', "root", "root");
+<?php
+
+$pdo = new PDO('mysql:host=localhost;dbname=mon_carnet', "root", "root");
 $requestvaccin = $pdo->prepare("SELECT * FROM `vaccin` JOIN utilisateur ON vaccin.utilisateur_id=utilisateur.id"); //Préparer
 $requestvaccin->execute(); //Executer 
 $vaccins = $requestvaccin->fetchAll();
@@ -9,6 +11,11 @@ $requesttypevaccin->execute(); //Executer
 $vaccinstype = $requesttypevaccin->fetchAll();
 
 session_start();
+$id = $_SESSION['id'];
+$reqprofil = $pdo->prepare("SELECT * FROM utilisateur WHERE `id` = '$id'"); //Préparer
+$reqprofil->execute(); //Executer 
+$affprofil = $reqprofil->fetchAll();
+
 if (!empty($_POST["nom"]) && !empty($_POST["date"])) {
     $nom = $_POST["nom"];
     $date = $_POST["date"];
@@ -18,6 +25,15 @@ if (!empty($_POST["nom"]) && !empty($_POST["date"])) {
 
     $insertvaccin = $pdo->prepare("INSERT INTO vaccin (nomvaccin,date,utilisateur_id) VALUES ('$nom','$date','$id')");
     $insertvaccin->execute();
+
+    $today = new DateTime();
+    $aujourdhui = $today->format('Y-m-d');
+
+    if ($aujourdhui < $date) {
+
+        include("mail.php");
+    }
+
     header('Location: carnet.php');
 }
 if (!empty($_POST['supprimer_x']) && !empty($_POST["idinput"])) {
@@ -28,6 +44,9 @@ if (!empty($_POST['supprimer_x']) && !empty($_POST["idinput"])) {
     $suppvaccin->execute();
     header('Location: carnet.php');
 }
+
+
+
 
 ?>
 
@@ -52,20 +71,16 @@ if (!empty($_POST['supprimer_x']) && !empty($_POST["idinput"])) {
     <div class="carnet">
         <div class="infoperso">
 
-            <h4 title="NOM"><?php echo $_SESSION["nom"] ?></h4>
+            <h4 title="NOM"><?php echo $affprofil[0]["nom"] ?></h4>
 
 
-            <h4 title="PRENOM"><?php echo $_SESSION["prenom"] ?></h4>
+            <h4 title="PRENOM"><?php echo $affprofil[0]["prenom"] ?></h4>
 
 
-            <h4 title="E-MAIL"><?php echo $_SESSION["email"] ?></h4>
+            <h4 title="E-MAIL"><?php echo $affprofil[0]["email"] ?></h4>
 
-<<<<<<< HEAD
-            <h4><?php echo $_SESSION["date_de_naissance"] ?></h4>
-=======
-            <h4 title="DATE DE NAISSANCE"><?php echo $_SESSION["date_de_naissance"] ?></h4>
+            <h4 title="DATE DE NAISSANCE"><?php echo date('d/m/Y', strtotime($affprofil[0]["date_de_naissance"])); ?></h4>
 
->>>>>>> 6adb330fdc9a27b37a6bd6b0438250fda6b7dbb1
         </div>
 
         <div class="vaccin">
@@ -103,7 +118,7 @@ if (!empty($_POST['supprimer_x']) && !empty($_POST["idinput"])) {
                                     <td>
                                         <div class="infovaccin">
                                             <p> <?php echo $vaccin['nomvaccin']; ?></p>
-                                            <p> <?php echo $vaccin['date']; ?></p>
+                                            <p> <?php echo date('d/m/Y', strtotime($vaccin['date']));; ?></p>
                                         </div>
                                         <div class="option-vaccin">
                                             <div class="button">

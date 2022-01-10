@@ -59,7 +59,7 @@
     ?>
     <?php
     session_start();
-    $pdo = new PDO('mysql:host=localhost;dbname=mon_carnet', "root");
+    $pdo = new PDO('mysql:host=localhost;dbname=mon_carnet', "root", "root");
     if (!empty($_POST)) {
         if (empty($_POST["nom"]) || empty($_POST["prenom"]) || empty($_POST["date"]) || empty($_POST["email"]) || empty($_POST["mdp"])) {
             echo ("Tous les champs ne sont pas remplis!!!");
