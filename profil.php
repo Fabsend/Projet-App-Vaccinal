@@ -1,5 +1,5 @@
 <?php
-$pdo = new PDO('mysql:host=localhost;dbname=mon_carnet', "root", "root");
+$pdo = new PDO('mysql:host=localhost;dbname=mon_carnet', "root");
 session_start();
 $id = $_SESSION['id'];
 $recu_info = $pdo->prepare("SELECT * FROM utilisateur WHERE id = $id");
@@ -41,32 +41,39 @@ if (!empty($_POST)) {
 <body>
     <?php
     include("header.php") ?>
-    <h2>Modifiez le profil de votre carnet </h2><br>
-    <form action="#" method="POST">
 
-        <label for="prenom">Nom:</label>
-        <input type="nom" name="nom" value="<?php
+    <section class="main">
+        <h2>Modifiez le profil de votre carnet </h2><br>
+        <form action="#" method="POST">
+
+            <div>
+                <label for="prenom">Nom:</label>
+                <input type="nom" name="nom" value="<?php
                                                     echo ($recu_info['nom']);
                                                     ?>">
+            </div>
+            <div>
+                <label for="prenom">Prénom:</label>
+                <input type="prenom" name="prenom" value="<?php
+                                                            echo ($recu_info['prenom']);
+                                                            ?>">
+            </div>
 
-        <label for="prenom">Prénom:</label>
-        <input type="prenom" name="prenom" value="<?php
-                                            echo ($recu_info['prenom']);
-                                            ?>">
- <label for="prenom">adresse e-mail:</label>
-        <input type="email" name="email" value="<?php
-                                                    echo ($recu_info['email']);
-                                                    ?>">
-                                                    <label for="prenom">adresse e-mail:</label>
-        <input type="text" name="password" value="<?php
-                                                    echo ($recu_info['password']);
-                                                    ?>">
+            <div> <label for="prenom">Adresse E-mail:</label>
+                <input type="email" name="email" value="<?php
+                                                        echo ($recu_info['email']);
+                                                        ?>">
+            </div>
+            <div> <label for="prenom">Mot de Passe</label>
+                <input type="text" name="password" value="<?php
+                                                            echo ($recu_info['password']);
+                                                            ?>">
 
+            </div>
+            <input class="submit-button" type="submit" value="Modifier">
 
-        <input class="submit-button" type="submit" value="Modifier">
-
-    </form>
-
+        </form>
+    </section>
     <?php
     include("footer.php")
     ?>
