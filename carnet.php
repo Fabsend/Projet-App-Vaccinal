@@ -74,7 +74,7 @@ debug($affprofil);
 
             <h4 title="E-MAIL"><?php echo $affprofil[0]["email"] ?></h4>
 
-            <h4 title="DATE DE NAISSANCE"><?php echo $affprofil[0]["date_de_naissance"] ?></h4>
+            <h4 title="DATE DE NAISSANCE"><?php echo date('d/m/Y', strtotime($affprofil[0]["date_de_naissance"])); ?></h4>
 
         </div>
 
@@ -113,7 +113,7 @@ debug($affprofil);
                                     <td>
                                         <div class="infovaccin">
                                             <p> <?php echo $vaccin['nomvaccin']; ?></p>
-                                            <p> <?php echo $vaccin['date']; ?></p>
+                                            <p> <?php echo date('d/m/Y', strtotime($vaccin['date']));; ?></p>
                                         </div>
                                         <div class="option-vaccin">
                                             <div class="button">
