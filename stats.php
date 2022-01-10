@@ -48,18 +48,20 @@ $age6 = $req8->fetchAll();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stats.css">
-    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="headeradmin.css">
     <link rel="stylesheet" href="footer.css">
     <title>Document</title>
 </head>
+
 <body>
-    <?php 
-    include("header.php");
+    <?php
+    include("headeradmin.php");
     ?>
     <br><br>
     <table>
@@ -73,18 +75,18 @@ $age6 = $req8->fetchAll();
         </tr>
         <tr>
             <td>Nombre d'utilisateurs</td>
-            <td><?php echo(count($age2))?></td>
-            <td><?php echo(count($age3))?></td>
-            <td><?php echo(count($age4))?></td>
-            <td><?php echo(count($age5))?></td>
-            <td><?php echo(count($age2)+count($age3)+count($age4)+count($age5))?></td>
+            <td><?php echo (count($age2)) ?></td>
+            <td><?php echo (count($age3)) ?></td>
+            <td><?php echo (count($age4)) ?></td>
+            <td><?php echo (count($age5)) ?></td>
+            <td><?php echo (count($age2) + count($age3) + count($age4) + count($age5)) ?></td>
         </tr>
         <tr>
             <td>Nombre d'utilisateurs en %</td>
-            <td><?php echo(round((count($age2)*100/(count($ageuser))),2)) ?></td>
-            <td><?php echo(round((count($age3)*100/(count($ageuser))),2)) ?></td>
-            <td><?php echo(round((count($age4)*100/(count($ageuser))),2)) ?></td>
-            <td><?php echo(round((count($age5)*100/(count($ageuser))),2)) ?></td>
+            <td><?php echo (round((count($age2) * 100 / (count($ageuser))), 2)) ?></td>
+            <td><?php echo (round((count($age3) * 100 / (count($ageuser))), 2)) ?></td>
+            <td><?php echo (round((count($age4) * 100 / (count($ageuser))), 2)) ?></td>
+            <td><?php echo (round((count($age5) * 100 / (count($ageuser))), 2)) ?></td>
             <td>100</td>
         </tr>
     </table><br><br>
@@ -93,7 +95,7 @@ $age6 = $req8->fetchAll();
             <td></td>
             <?php
             foreach ($nbrvaccins as $nbrvaccin) {
-                echo ("<td>" . $nbrvaccin['nomvaccin'] . "</td>");    
+                echo ("<td>" . $nbrvaccin['nomvaccin'] . "</td>");
             }
             ?>
             <td>Total</td>
@@ -102,20 +104,20 @@ $age6 = $req8->fetchAll();
             <td>Nombre de vaccins renseignés</td>
             <?php
             foreach ($nbrvaccins as $nbrvaccin) {
-                echo ("<td>" . $nbrvaccin['COUNT(*)'] . "</td>");    
+                echo ("<td>" . $nbrvaccin['COUNT(*)'] . "</td>");
             }
             ?>
             <td>
-            <?php
-            echo(array_sum(array_column($nbrvaccins,'COUNT(*)')));
-            ?>
+                <?php
+                echo (array_sum(array_column($nbrvaccins, 'COUNT(*)')));
+                ?>
             </td>
         </tr>
         <tr>
             <td>Nombre de vaccins renseignés en %</td>
             <?php
             foreach ($nbrvaccins as $nbrvaccin) {
-                echo ("<td>" . round($nbrvaccin['COUNT(*)']*100/(array_sum(array_column($nbrvaccins,'COUNT(*)'))),2) . "</td>");    
+                echo ("<td>" . round($nbrvaccin['COUNT(*)'] * 100 / (array_sum(array_column($nbrvaccins, 'COUNT(*)'))), 2) . "</td>");
             }
             ?>
             <td>100</td>
@@ -123,31 +125,31 @@ $age6 = $req8->fetchAll();
     </table><br><br>
     <?php
     foreach ($nbrusers as $nbruser) {
-        echo ("Il y a " . $nbruser['COUNT(*)'] . " compte(s) avec le role " . $nbruser['role'] . " dans la base de données.<br>"); 
-        echo (round($nbruser['COUNT(*)']*100/(array_sum(array_column($nbrusers,'COUNT(*)'))),2) . "% des comptes ont le role " . $nbruser['role'] . " dans la base de données.<br><br>");       
+        echo ("Il y a " . $nbruser['COUNT(*)'] . " compte(s) avec le role " . $nbruser['role'] . " dans la base de données.<br>");
+        echo (round($nbruser['COUNT(*)'] * 100 / (array_sum(array_column($nbrusers, 'COUNT(*)'))), 2) . "% des comptes ont le role " . $nbruser['role'] . " dans la base de données.<br><br>");
     }
 
     foreach ($nbrvaccins as $nbrvaccin) {
-        echo ("Il y a " . $nbrvaccin['COUNT(*)'] . " utilisateur(s) ayant le vaccin " . $nbrvaccin['nomvaccin'] . " dans leur carnet.<br>");    
-        echo ($nbrvaccin['nomvaccin'] . " correspond à " . round($nbrvaccin['COUNT(*)']*100/(array_sum(array_column($nbrvaccins,'COUNT(*)'))),2) . "% des vaccins renseignés dans les différents carnets.<br><br>");    
+        echo ("Il y a " . $nbrvaccin['COUNT(*)'] . " utilisateur(s) ayant le vaccin " . $nbrvaccin['nomvaccin'] . " dans leur carnet.<br>");
+        echo ($nbrvaccin['nomvaccin'] . " correspond à " . round($nbrvaccin['COUNT(*)'] * 100 / (array_sum(array_column($nbrvaccins, 'COUNT(*)'))), 2) . "% des vaccins renseignés dans les différents carnets.<br><br>");
     }
 
     foreach ($age as $agecle) {
         $birthDate = $agecle['date_de_naissance'];
         $currentDate = date("Y-m-d");
         $age = date_diff(date_create($birthDate), date_create($currentDate));
-        echo ("Il y a " . $agecle['COUNT(*)'] . " utilisateur(s) ayant " . $age->format("%y") . " ans.<br>");    
+        echo ("Il y a " . $agecle['COUNT(*)'] . " utilisateur(s) ayant " . $age->format("%y") . " ans.<br>");
     }
-    echo("<br>Il y a " . count($age2) . " utilisateur(s) de moins de 18 ans.<br>");
-    echo(round((count($age2)*100/(count($ageuser))),2) . "% des utilisateurs ont moins de 18 ans.<br>");
-    echo("Il y a " . count($age3) . " utilisateur(s) entre 21 et 39 ans.<br>");
-    echo(round((count($age3)*100/(count($ageuser))),2) . "% des utilisateurs ont  entre 21 et 40 ans.<br>");
-    echo("Il y a " . count($age4) . " utilisateur(s) entre 41 et 60 ans.<br>");
-    echo(round((count($age4)*100/(count($ageuser))),2) . "% des utilisateurs ont entre 41 et 60 ans.<br>");
-    echo("Il y a " . count($age5) . " utilisateur(s) de plus de 61 ans.<br>");
-    echo(round((count($age5)*100/(count($ageuser))),2) . "% des utilisateurs ont plus de 61 ans.<br><br>");
+    echo ("<br>Il y a " . count($age2) . " utilisateur(s) de moins de 18 ans.<br>");
+    echo (round((count($age2) * 100 / (count($ageuser))), 2) . "% des utilisateurs ont moins de 18 ans.<br>");
+    echo ("Il y a " . count($age3) . " utilisateur(s) entre 21 et 39 ans.<br>");
+    echo (round((count($age3) * 100 / (count($ageuser))), 2) . "% des utilisateurs ont  entre 21 et 40 ans.<br>");
+    echo ("Il y a " . count($age4) . " utilisateur(s) entre 41 et 60 ans.<br>");
+    echo (round((count($age4) * 100 / (count($ageuser))), 2) . "% des utilisateurs ont entre 41 et 60 ans.<br>");
+    echo ("Il y a " . count($age5) . " utilisateur(s) de plus de 61 ans.<br>");
+    echo (round((count($age5) * 100 / (count($ageuser))), 2) . "% des utilisateurs ont plus de 61 ans.<br><br>");
 
-    echo("L'âge moyen des utilisateurs est de " . $age6[0][0] . " ans.<br>");
+    echo ("L'âge moyen des utilisateurs est de " . $age6[0][0] . " ans.<br>");
 
     debug($nbrvaccins);
     ?>
@@ -155,4 +157,5 @@ $age6 = $req8->fetchAll();
     include("footer.php")
     ?>
 </body>
+
 </html>

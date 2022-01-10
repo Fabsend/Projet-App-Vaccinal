@@ -38,13 +38,13 @@ if (!empty($_POST["ajouter_modif"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="headeradmin.css">
     <link rel="stylesheet" href="footer.css">
     <title>Document</title>
 </head>
 
 <body>
-    <?php include("header.php") ?>
+    <?php include("headeradmin.php") ?>
 
     <div class="vaccin">
         <form action="" method="POST" class="ajoutvaccin">

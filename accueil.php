@@ -59,7 +59,7 @@ if (!empty($_POST["email"]) && !empty($_POST["password"])) {
             <h1>Vaccina</h1>
             <p>
 
-                <br>Gérez votre carnet vaccinale en toute sécurité
+                <br>Gérez votre carnet vaccinal en toute sécurité
             </p>
             <img src="gettyimages.jpg" alt="">
         </div>
