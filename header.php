@@ -1,8 +1,3 @@
-<?php
-$id = $_SESSION["id"];
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 

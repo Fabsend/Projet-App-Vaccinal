@@ -1,4 +1,4 @@
-<?php $pdo = new PDO('mysql:host=localhost;dbname=mon_carnet', "root");
+<?php $pdo = new PDO('mysql:host=localhost;dbname=mon_carnet', "root", "root");
 $requestvaccintype = $pdo->prepare("SELECT * FROM `type_vaccin`"); //Préparer
 $requestvaccintype->execute(); //Executer 
 $vaccinstype = $requestvaccintype->fetchAll();
@@ -45,7 +45,7 @@ if (!empty($_POST["ajouter_modif"])) {
 </head>
 
 <body>
-    <?php include("header.php") ?>
+    <?php include("headeradmin.php") ?>
     <section class="main">
         <div class="vaccin">
             <form action="" method="POST" class="ajoutvaccin">
