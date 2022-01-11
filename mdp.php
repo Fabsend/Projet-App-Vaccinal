@@ -30,7 +30,7 @@ session_start();
         <h2>Entrez votre adresse mail</h2>
         <form action="" method="POST" class="searchinput">
             <input class="barrerecherche" type="text" name="email" value="" />
-            <input class="submit" type="submit" value=" rechercher" />
+            <input class="submit" type="submit" value=" Envoyer" />
 
         </form>
 
