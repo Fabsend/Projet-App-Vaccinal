@@ -1,6 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 
-
 td {
   display: flex;
   margin-top: 10px;
@@ -16,6 +15,13 @@ h1 {
 h2 {
   margin-bottom: 10px;
 }
+.admin {
+  margin-top: 176px;
+  margin-bottom: 176px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .recherche {
   text-align: center;
   height: 100%;
@@ -27,9 +33,9 @@ h2 {
 }
 
 .user {
-  display: flex; 
+  display: flex;
   justify-content: center;
-  margin-top: 20px; 
+  margin-top: 20px;
   height: 250px;
   overflow: auto;
 }
@@ -58,27 +64,24 @@ h2 {
   margin-left: 15px;
 }
 
-
-
 @media (max-width: 600px) {
+  td {
+    flex-direction: column;
+  }
 
-td{
-  flex-direction: column;
-}
+  .submit {
+    width: auto;
+    padding: 2px;
+    height: 30px;
+    margin-right: 10px;
+    font-size: 12px;
+  }
 
-.submit{
-  width: auto;
-  padding: 2px;
-  height: 30px;
-  margin-right: 10px;
-  font-size: 12px;
-}
-
-.option_user{
-  align-items: center;
-}
-.barrerecherche {
-  height: 20px;
-  font-size: 20px;
-}
+  .option_user {
+    align-items: center;
+  }
+  .barrerecherche {
+    height: 20px;
+    font-size: 20px;
+  }
 }
