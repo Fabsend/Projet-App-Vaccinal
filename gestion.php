@@ -49,7 +49,7 @@ if (!empty($_POST["ajouter_modif"])) {
     <section class="main">
         <div class="vaccin">
             <form action="" method="POST" class="ajoutvaccin">
-                <p>Ajouter du vaccin</p>
+                <p>Ajouter un vaccin</p>
                 <input type="text" name="nom">
                 <input type="submit" class=" submit contour" value="Ajouter">
 
@@ -67,7 +67,7 @@ if (!empty($_POST["ajouter_modif"])) {
             $vaccinmodif = $requestvaccinmodif->fetch();
         ?><div class="vaccin">
                 <form action="" method="POST">
-                    <p>Modifez le vaccin</p>
+                    <p>Modifiez le vaccin</p>
                     <input class="modifier" type="text" name="nom_modif" value="<?php echo $vaccinmodif['nom_vaccin'] ?>">
                     <input type="text" name="idinputmodif" hidden value="<?php echo $vaccinmodif['id'] ?>">
                     <input class=" submit" type="submit" name="ajouter_modif" value=" Modifier">
