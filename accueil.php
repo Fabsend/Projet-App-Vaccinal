@@ -75,7 +75,8 @@ if (!empty($_POST["email"]) && !empty($_POST["password"])) {
                 <input type="submit" value="Valider" class="valider"><br>
                 <?php
                 if ($message_erreur == true) {
-                    echo "<p class='message_erreur'>Utilisateur ou Mot de passe inconnu</p>";
+                    echo "<p class='message_erreur'>Utilisateur ou Mot de passe inconnu</p>
+                    <p>Vous avez oubliez votre mot de passe <a href='mdp.php'> Cliquez ici</a></p>";
                 } ?>
                 Vous n'avez pas un compte ? <a href="inscription.php">Créer un compte</a>
 
