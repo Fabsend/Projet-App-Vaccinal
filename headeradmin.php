@@ -13,22 +13,33 @@ $id = $_SESSION["id"];
     <link rel="stylesheet" href="headeradmin.css">
 
 
-    <title>Document</title>
+    <title>Header Admin</title>
 </head>
 
 <body>
-    <header>
-        <div>
+    <nav>
+
+        <input id="nav-toggle" type="checkbox">
+        <div class="logo">
 
             <a href="pageadmin.php"><img src="vaccina logo.png" alt="logo"></a>
         </div>
-        <div>
-            <button class="gestionuser"><a href="gestion.php">Gestion des vaccins</a></button>
-            <button class="profil"><a href="stats.php">Statistiques</a></button>
-            <button><a href="Deconnection.php">Déconnexion</a></button>
-        </div>
 
-    </header>
+        <ul class="links">
+            <li><a href="gestion.php">Gestion des vaccins</a></li>
+            <li><a href="stats.php">Statistiques</a></li>
+            <li><a href="carnet.php">Mon Carnet</a></li>
+            <li class="deconnexion"><a href="Deconnection.php">Déconnexion</a></li>
+        </ul>
+        <label for="nav-toggle" class="icon-burger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </label>
+
+
+
+    </nav>
 </body>
 
 </html>
