@@ -20,11 +20,11 @@ $id = $_SESSION["id"];
     <header>
         <div>
 
-            <a href="carnet.php"><img src="vaccina logo.png" alt="logo"></a>
+            <a href="pageadmin.php"><img src="vaccina logo.png" alt="logo"></a>
         </div>
-        <div class="buttons">
+        <div>
             <button class="gestionuser"><a href="gestion.php">Gestion des vaccins</a></button>
-            <button class="profil"><a href="stats.php">Statistique</a></button>
+            <button class="profil"><a href="stats.php">Statistiques</a></button>
             <button><a href="Deconnection.php">Déconnexion</a></button>
         </div>
 
