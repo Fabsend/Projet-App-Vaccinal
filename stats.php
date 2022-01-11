@@ -128,7 +128,7 @@ $nbrtypevaccins = $req9->fetchAll();
             <td class="taille">Nombre de vaccins dans la BDD</td>
             <td class="taille2"><?php echo(count($nbrtypevaccins));?></td>
         </tr>
-    </table>
+    </table><br><br>
     <?php
     include("footer.php")
     ?>
