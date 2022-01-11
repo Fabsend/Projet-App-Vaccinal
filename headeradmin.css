@@ -37,13 +37,36 @@ button a {
   color: white;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 710px) {
   button {
-    padding: 4px 10px;
+    padding: 2px 5px;
     background-color: red;
     color: #fff;
     border: 1px solid black;
     border-radius: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  button {
+    padding: 1px 3px;
+    margin-top: 10px;
+    background-color: red;
+    color: #fff;
+    border: 1px solid black;
+    border-radius: 10px;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 400px) {
+  button {
+    padding: 0.5px 1px;
   }
 }
 
@@ -53,7 +76,6 @@ header img {
 }
 
 .profil {
-  margin-left: auto;
   background-color: #ceba05;
 }
 

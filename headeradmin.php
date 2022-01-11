@@ -22,7 +22,7 @@ $id = $_SESSION["id"];
 
             <a href="carnet.php"><img src="vaccina logo.png" alt="logo"></a>
         </div>
-        <div>
+        <div class="buttons">
             <button class="gestionuser"><a href="gestion.php">Gestion des vaccins</a></button>
             <button class="profil"><a href="stats.php">Statistique</a></button>
             <button><a href="Deconnection.php">Déconnexion</a></button>
