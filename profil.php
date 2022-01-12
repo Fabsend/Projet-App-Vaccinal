@@ -12,15 +12,30 @@ $recu_info = $recu_info->fetch();
 
 
 if (!empty($_POST)) {
-
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $id = $_SESSION["id"];
-    $req = $pdo->prepare("UPDATE `utilisateur` SET `nom` = '$nom', `prenom` = '$prenom', `email` = '$email', `password` = '$password' WHERE `utilisateur`.`id` = '$id' ");
-    $req->execute();
-    header('Location: carnet.php');
+    $recuemail = $recu_info['email'];
+    $ver1 = $pdo->prepare("SELECT * FROM utilisateur WHERE email = '$email'");
+    $ver1->execute();
+    $users1 = $ver1->fetch();
+    if ($users1){
+        if ($recuemail == $email) {
+            $req1 = $pdo->prepare("UPDATE `utilisateur` SET `nom` = '$nom', `prenom` = '$prenom', `email` = '$email', `password` = '$password' WHERE `utilisateur`.`id` = '$id' ");
+            $req1->execute();
+            header('Location: carnet.php');
+        } 
+        else {
+            echo ("L'adresse email est déjà utilisée!"); 
+        }
+    }
+    else {
+        $req2 = $pdo->prepare("UPDATE `utilisateur` SET `nom` = '$nom', `prenom` = '$prenom', `email` = '$email', `password` = '$password' WHERE `utilisateur`.`id` = '$id' ");
+        $req2->execute();
+        header('Location: carnet.php');
+    }
 }
 ?>
 
