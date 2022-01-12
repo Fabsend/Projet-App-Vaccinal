@@ -26,13 +26,10 @@ if (!empty($_POST["nom"]) && !empty($_POST["date"])) {
     $insertvaccin = $pdo->prepare("INSERT INTO vaccin (nomvaccin,date,utilisateur_id) VALUES ('$nom','$date','$id')");
     $insertvaccin->execute();
 
-    $today = new DateTime();
-    $aujourdhui = $today->format('Y-m-d');
 
-    if ($aujourdhui < $date) {
 
-        include("mail.php");
-    }
+    include("mail.php");
+
 
     header('Location: carnet.php');
 }
