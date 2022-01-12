@@ -14,7 +14,7 @@
     include("headeraccueil.php") ?>
     <section class="mentionlegale">
         <h1 class="mentionlegaletitre">
-            Mention Légale
+            Mentions Légales
         </h1>
         <p>Conformément aux dispositions de la loi n° 2004-575 du 21 juin 2004 pour la confiance en l’économie numérique, il est précisé aux utilisateurs du site <a href="https://www.Vaccina.fr/">Vaccina.fr</a> l’identité des différents intervenants dans le cadre de sa réalisation et de son suivi.</p>
         <strong>Edition du site</strong>
