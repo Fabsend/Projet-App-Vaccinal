@@ -27,7 +27,13 @@ if (!empty($_POST["email"]) && !empty($_POST["password"])) {
         header('Location: carnet.php');
     } else 
     if (!empty($users) && $users['role'] == 'admin') {
+        $_SESSION["nom"] = $users["nom"];
+        $_SESSION["prenom"] = $users["prenom"];
+        $_SESSION["date_de_naissance"] = $users["date_de_naissance"];
+        $_SESSION["email"] = $users["email"];
+        $_SESSION["password"] = $users["password"];
         $_SESSION["id"] = $users["id"];
+        $_SESSION["role"] = $users["role"];
         header('Location: pageadmin.php');
     } else {
         $message_erreur = true;

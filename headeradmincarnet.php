@@ -26,6 +26,7 @@ $id = $_SESSION["id"];
         </div>
 
         <ul class="links">
+            <li><a href="profiladmin.php">Profil</a></li>
             <li><a href="gestion.php">Gestion des vaccins</a></li>
             <li><a href="stats.php">Statistiques</a></li>
             <li class="deconnexion"><a href="Deconnection.php">Déconnexion</a></li>

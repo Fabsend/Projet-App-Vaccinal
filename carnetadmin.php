@@ -58,14 +58,14 @@ if (!empty($_POST['supprimer_x']) && !empty($_POST["idinput"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="carnet.css">
+    <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="footer.css">
     <title>Vaccina</title>
 </head>
 
 <body>
-    <?php include("header.php") ?>
+    <?php include("headeradmincarnet.php") ?>
 
 
     <div class="carnet">
@@ -122,7 +122,7 @@ if (!empty($_POST['supprimer_x']) && !empty($_POST["idinput"])) {
                                         </div>
                                         <div class="option-vaccin">
                                             <div class="button">
-                                                <?php echo ("<a class='modif' href='modifier.php?nomvaccin=" . $vaccin['nomvaccin'] . "&date=" . $vaccin['date'] . "&id=" . $vaccin['idvaccin'] . "'><img  src='SM_icons/modify.png'/></a>"); ?>
+                                                <?php echo ("<a   class='modif' href='modifier.php?nomvaccin=" . $vaccin['nomvaccin'] . "&date=" . $vaccin['date'] . "&id=" . $vaccin['idvaccin'] . "'><img  src='SM_icons/modify.png'/></a>"); ?>
                                             </div>
 
                                             <form action="" method="POST">
@@ -150,7 +150,7 @@ if (!empty($_POST['supprimer_x']) && !empty($_POST["idinput"])) {
         </div>
     </div>
 
-    <?php include("footer.php") ?>
+    <?php include("footeradmin.php") ?>
 
 </body>
 

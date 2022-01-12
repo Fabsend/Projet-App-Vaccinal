@@ -46,6 +46,7 @@ $nbrtypevaccins = $req9->fetchAll();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -55,8 +56,9 @@ $nbrtypevaccins = $req9->fetchAll();
     <link rel="stylesheet" href="footer.css">
     <title>Document</title>
 </head>
+
 <body>
-    <?php 
+    <?php
     include("headeradmin.php");
     ?>
     <br><br>
@@ -67,28 +69,28 @@ $nbrtypevaccins = $req9->fetchAll();
             <td class="colortitre">Nombre d'utilisateurs en %</td>
         </tr>
         <tr>
-            <td class="colortitre">Moins de 18 ans</td>            
-            <td><?php echo(count($age2))?></td>
-            <td><?php echo(round((count($age2)*100/(count($ageuser))),2)) ?></td>
+            <td class="colortitre">Moins de 18 ans</td>
+            <td><?php echo (count($age2)) ?></td>
+            <td><?php echo (round((count($age2) * 100 / (count($ageuser))), 2)) ?></td>
         </tr>
         <tr>
             <td class="colortitre">19 à 40 ans</td>
-            <td><?php echo(count($age3))?></td>
-            <td><?php echo(round((count($age3)*100/(count($ageuser))),2)) ?></td>
+            <td><?php echo (count($age3)) ?></td>
+            <td><?php echo (round((count($age3) * 100 / (count($ageuser))), 2)) ?></td>
         </tr>
         <tr>
             <td class="colortitre">41 à 60 ans</td>
-            <td><?php echo(count($age4))?></td>
-            <td><?php echo(round((count($age4)*100/(count($ageuser))),2)) ?></td>
+            <td><?php echo (count($age4)) ?></td>
+            <td><?php echo (round((count($age4) * 100 / (count($ageuser))), 2)) ?></td>
         </tr>
         <tr>
             <td class="colortitre">61 ans et plus</td>
-            <td><?php echo(count($age5))?></td>
-            <td><?php echo(round((count($age5)*100/(count($ageuser))),2)) ?></td>
+            <td><?php echo (count($age5)) ?></td>
+            <td><?php echo (round((count($age5) * 100 / (count($ageuser))), 2)) ?></td>
         </tr>
         <tr>
             <td class="colortitre">Total</td>
-            <td><?php echo(count($age2)+count($age3)+count($age4)+count($age5))?></td>
+            <td><?php echo (count($age2) + count($age3) + count($age4) + count($age5)) ?></td>
             <td>100</td>
         </tr>
     </table><br><br>
@@ -98,23 +100,23 @@ $nbrtypevaccins = $req9->fetchAll();
             <td class="colortitre">Vaccins renseignés</td>
             <td class="colortitre">Vaccins renseignés en %</td>
         </tr>
-        
-            <?php
-            foreach ($nbrvaccins as $nbrvaccin) {
-                echo ("<tr>
+
+        <?php
+        foreach ($nbrvaccins as $nbrvaccin) {
+            echo ("<tr>
                 <td class='colortitre'>" . $nbrvaccin['nomvaccin'] . "</td>
                 <td>" . $nbrvaccin['COUNT(*)'] . "</td>
-                <td>" . round($nbrvaccin['COUNT(*)']*100/(array_sum(array_column($nbrvaccins,'COUNT(*)'))),2) . "</td>
-                </tr>");    
-            }
-            ?>
-        
+                <td>" . round($nbrvaccin['COUNT(*)'] * 100 / (array_sum(array_column($nbrvaccins, 'COUNT(*)'))), 2) . "</td>
+                </tr>");
+        }
+        ?>
+
         <tr>
             <td class="colortitre">Total</td>
             <td>
-            <?php
-            echo(array_sum(array_column($nbrvaccins,'COUNT(*)')));
-            ?>
+                <?php
+                echo (array_sum(array_column($nbrvaccins, 'COUNT(*)')));
+                ?>
             </td>
             <td>100</td>
         </tr>
@@ -122,15 +124,16 @@ $nbrtypevaccins = $req9->fetchAll();
     <table class="csstable">
         <tr>
             <td class="taille">Age moyen des utilisateurs</td>
-            <td class="taille2"><?php echo($age6[0][0]);?></td>
+            <td class="taille2"><?php echo ($age6[0][0]); ?></td>
         </tr>
         <tr>
             <td class="taille">Nombre de vaccins dans la BDD</td>
-            <td class="taille2"><?php echo(count($nbrtypevaccins));?></td>
+            <td class="taille2"><?php echo (count($nbrtypevaccins)); ?></td>
         </tr>
     </table><br><br>
     <?php
-    include("footer.php")
+    include("footeradmin.php")
     ?>
 </body>
+
 </html>

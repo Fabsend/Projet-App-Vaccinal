@@ -17,7 +17,7 @@ if (!empty($_POST['voir'])) {
     $_SESSION["nom"] = $_POST["nom"];
     $_SESSION["email"] = $_POST["email"];
     $_SESSION["date_de_naissance"] = $_POST["date_de_naissance"];
-    header('Location: carnet.php');
+    header('Location: carnetadmin.php');
 }
 
 if (!empty($_POST['supprimer_x'])) {
@@ -46,70 +46,73 @@ if (!empty($_POST['user']) && ($_POST['role'] == "admin")) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylepageadmin.css">
-    <link rel="stylesheet" href="header.css">
+
 
     <title>Document</title>
 </head>
 
 <body>
     <?php include("headeradmin.php") ?>
-    <div class="admin">
-        <div class="recherche">
-            <h1>MODE ADMIN</h1>
+    <?php if ($_SESSION["role"] == "admin") { ?>
 
-            <div class="searchbar">
+        <div class="admin">
+            <div class="recherche">
+                <h1>MODE ADMIN</h1>
 
-                <h2>Recherche utilisateur</h2>
-                <form action="" method="POST" class="searchinput">
-                    <input class="barrerecherche" type="text" name="search" value="" />
-                    <input class="submit" type="submit" value=" rechercher" />
+                <div class="searchbar">
 
-                </form>
+                    <h2>Recherche utilisateur</h2>
+                    <form action="" method="POST" class="searchinput">
+                        <input class="barrerecherche" type="text" name="search" value="" />
+                        <input class="submit" type="submit" value=" rechercher" />
+
+                    </form>
+                </div>
+            </div>
+            <div class="user">
+                <table>
+                    <tr>
+                        <?php if (!empty($_POST["search"])) {
+                            foreach ($users as $user) {
+                        ?>
+                                <td>
+                                    <div class="nom_user">
+                                        <p> <?php echo $user["nom"] . " "; ?></p>
+                                        <p> <?php echo $user["prenom"]; ?></p>
+                                    </div>
+                                    <form action="" method="POST" class="option_user">
+
+                                        <input type="submit" name="voir" class=submit value=" voir le carnet">
+                                        <input type="text" hidden name="idinput" value="<?php echo $user['id'] ?>">
+                                        <input type="text" hidden name="nom" value="<?php echo $user['nom'] ?>">
+                                        <input type="text" hidden name="prenom" value="<?php echo $user['prenom'] ?>">
+                                        <input type="text" hidden name="email" value="<?php echo $user['email'] ?>">
+                                        <input type="text" hidden name="date_de_naissance" value="<?php echo $user['date_de_naissance'] ?>">
+                                        <input type="text" hidden name="role" value="<?php echo $user['role'] ?>">
+
+                                        <?php if ($user["role"] == "user") {
+                                        ?> <input type="submit" class="submit" name="admin" value="passer l'utilisateur en admin">
+                                        <?php  } ?>
+
+                                        <?php if ($user["role"] == "admin") {
+                                        ?> <input type="submit" class="submit" name="user" value="passer l'admin en utilisateur">
+                                        <?php  } ?>
+
+                                        <input type="image" class="delete" name="supprimer" src="SM_icons/trash.png">
+                                    </form>
+                                </td>
+
+
+                        <?php }
+                        } ?>
+                    </tr>
+                </table>
             </div>
         </div>
-        <div class="user">
-            <table>
-                <tr>
-                    <?php if (!empty($_POST["search"])) {
-                        foreach ($users as $user) {
-                    ?>
-                            <td>
-                                <div class="nom_user">
-                                    <p> <?php echo $user["nom"] . " "; ?></p>
-                                    <p> <?php echo $user["prenom"]; ?></p>
-                                </div>
-                                <form action="" method="POST" class="option_user">
-
-                                    <input type="submit" name="voir" class=submit value=" voir le carnet">
-                                    <input type="text" hidden name="idinput" value="<?php echo $user['id'] ?>">
-                                    <input type="text" hidden name="nom" value="<?php echo $user['nom'] ?>">
-                                    <input type="text" hidden name="prenom" value="<?php echo $user['prenom'] ?>">
-                                    <input type="text" hidden name="email" value="<?php echo $user['email'] ?>">
-                                    <input type="text" hidden name="date_de_naissance" value="<?php echo $user['date_de_naissance'] ?>">
-                                    <input type="text" hidden name="role" value="<?php echo $user['role'] ?>">
-
-                                    <?php if ($user["role"] == "user") {
-                                    ?> <input type="submit" class="submit" name="admin" value="passer l'utilisateur en admin">
-                                    <?php  } ?>
-
-                                    <?php if ($user["role"] == "admin") {
-                                    ?> <input type="submit" class="submit" name="user" value="passer l'admin en utilisateur">
-                                    <?php  } ?>
-
-                                    <input type="image" class="delete" name="supprimer" src="SM_icons/trash.png">
-                                </form>
-                            </td>
 
 
-                    <?php }
-                    } ?>
-                </tr>
-            </table>
-        </div>
-    </div>
-
-    <?php include("footer.php") ?>
-
+        <?php include("footeradmin.php") ?>
+    <?php } ?>
 </body>
 
 </html>
