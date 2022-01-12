@@ -29,6 +29,8 @@ if (!empty($_POST["ajouter_modif"])) {
     header('Location: gestion.php');
 }
 
+if ($_SESSION["connected"] == true){
+
 ?>
 
 <!DOCTYPE html>
@@ -113,3 +115,9 @@ if (!empty($_POST["ajouter_modif"])) {
 </body>
 
 </html>
+<?php
+}
+else{
+    header('Location: accueil.php');
+}
+?>

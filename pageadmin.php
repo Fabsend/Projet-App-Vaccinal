@@ -37,6 +37,9 @@ if (!empty($_POST['user']) && ($_POST['role'] == "admin")) {
     $requestusers = $pdo->prepare("UPDATE utilisateur SET `role` = 'user' WHERE id = '$idinput' ");
     $requestusers->execute();
 }
+
+if ($_SESSION["connected"] == true){
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -116,3 +119,9 @@ if (!empty($_POST['user']) && ($_POST['role'] == "admin")) {
 </body>
 
 </html>
+<?php
+}
+else{
+    header('Location: accueil.php');
+}
+?>

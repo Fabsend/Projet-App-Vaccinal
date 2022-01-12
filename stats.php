@@ -42,6 +42,8 @@ $req9 = $pdo->prepare("SELECT nom_vaccin, COUNT(*) FROM type_vaccin GROUP BY nom
 $req9->execute();
 $nbrtypevaccins = $req9->fetchAll();
 
+if ($_SESSION["connected"] == true){
+
 ?>
 
 <!DOCTYPE html>
@@ -137,3 +139,10 @@ $nbrtypevaccins = $req9->fetchAll();
 </body>
 
 </html>
+
+<?php
+}
+else{
+    header('Location: accueil.php');
+}
+?>

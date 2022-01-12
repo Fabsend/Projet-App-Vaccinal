@@ -3,6 +3,9 @@ $pdo = new PDO('mysql:host=localhost;dbname=mon_carnet', "root", "root");
 $requesttypevaccin = $pdo->prepare("SELECT * FROM `type_vaccin`"); //Préparer
 $requesttypevaccin->execute(); //Executer 
 $vaccinstype = $requesttypevaccin->fetchAll();
+
+if ($_SESSION["connected"] == true){
+
 ?>
 
 
@@ -64,3 +67,9 @@ $vaccinstype = $requesttypevaccin->fetchAll();
 </body>
 
 </html>
+<?php
+}
+else{
+    header('Location: accueil.php');
+}
+?>

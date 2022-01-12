@@ -34,6 +34,7 @@ if (!empty($_POST["email"]) && !empty($_POST["password"])) {
         $_SESSION["password"] = $users["password"];
         $_SESSION["id"] = $users["id"];
         $_SESSION["role"] = $users["role"];
+        $_SESSION["connected"] = true;
         header('Location: pageadmin.php');
     } else {
         $message_erreur = true;

@@ -22,6 +22,9 @@ if (!empty($_POST)) {
     $req->execute();
     header('Location: carnetadmin.php');
 }
+
+if ($_SESSION["connected"] == true){
+
 ?>
 
 
@@ -80,3 +83,9 @@ if (!empty($_POST)) {
 
 
 </html>
+<?php
+}
+else{
+    header('Location: accueil.php');
+}
+?>

@@ -45,8 +45,7 @@ if (!empty($_POST['supprimer_x']) && !empty($_POST["idinput"])) {
     header('Location: carnet.php');
 }
 
-
-
+if ($_SESSION["connected"] == true){
 
 ?>
 
@@ -155,3 +154,10 @@ if (!empty($_POST['supprimer_x']) && !empty($_POST["idinput"])) {
 </body>
 
 </html>
+
+<?php
+}
+else{
+    header('Location: accueil.php');
+}
+?>

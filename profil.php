@@ -37,6 +37,9 @@ if (!empty($_POST)) {
         header('Location: carnet.php');
     }
 }
+
+if ($_SESSION["connected"] == true){
+
 ?>
 
 
@@ -93,6 +96,11 @@ if (!empty($_POST)) {
     include("footer.php")
     ?>
 </body>
-
-
 </html>
+
+<?php
+}
+else{
+    header('Location: accueil.php');
+}
+?>
