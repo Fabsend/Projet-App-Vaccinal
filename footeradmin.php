@@ -33,7 +33,7 @@
             <ul>
                 <h3>Informations :</h3><br>
 
-                <li><a href="mentionlegale.php" target="blank"> Mention légale</a></li>
+                <li><a href="mentionlegale.php" target="blank"> Mentions légales</a></li>
                 <li>Service client</li>
                 <li><a href="https://www.sante.fr/" target="blank"> Santé.fr</a></li>
             </ul>

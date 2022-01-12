@@ -24,7 +24,7 @@
         <ul class="links">
 
             <li><a href="profil.php">Profil</a></li>
-            <li><a href="mentionlegale.php">Mention légale</a></li>
+            <li><a href="mentionlegale.php">Mentions légales</a></li>
             <li class="deconnexion"><a href="Deconnection.php">Déconnexion</a></li>
         </ul>
         <label for="nav-toggle" class="icon-burger">
