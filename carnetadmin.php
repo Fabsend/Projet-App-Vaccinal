@@ -65,7 +65,7 @@ if (!empty($_POST['supprimer_x']) && !empty($_POST["idinput"])) {
 </head>
 
 <body>
-    <?php include("header.php") ?>
+    <?php include("headeradmin.php") ?>
 
 
     <div class="carnet">
@@ -122,7 +122,7 @@ if (!empty($_POST['supprimer_x']) && !empty($_POST["idinput"])) {
                                         </div>
                                         <div class="option-vaccin">
                                             <div class="button">
-                                                <?php echo ("<a class='modif' href='modifier.php?nomvaccin=" . $vaccin['nomvaccin'] . "&date=" . $vaccin['date'] . "&id=" . $vaccin['idvaccin'] . "'><img  src='SM_icons/modify.png'/></a>"); ?>
+                                                <?php echo ("<a   class='modif' href='modifier.php?nomvaccin=" . $vaccin['nomvaccin'] . "&date=" . $vaccin['date'] . "&id=" . $vaccin['idvaccin'] . "'><img  src='SM_icons/modify.png'/></a>"); ?>
                                             </div>
 
                                             <form action="" method="POST">

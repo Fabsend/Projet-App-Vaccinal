@@ -1,183 +1,188 @@
 h4 {
-    font-size: 20px;
-    border: 1px solid black;
-    background-color: #fff;
-    color: black;
-    padding: 10px;
-    width: 40%;
-    border-radius: 15px;
-    margin: 10px auto;
+  font-size: 20px;
+  border: 1px solid black;
+  background-color: #fff;
+  color: black;
+  padding: 10px;
+  width: 70%;
+  border-radius: 15px;
+  margin: 10px auto;
 }
 
 td {
-    width: auto;
-    display: flex;
-    margin-top: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    border: 1px solid green;
-    border-radius: 5px;
-    background-color: #d4d4d4;
+  width: 97%;
+  display: flex;
+  align-items: center;
+  margin: 5px auto;
+  background-color: #fff;
+  border-radius: 10px;
+  height: 60px;
 }
 
 table {
-    width: 100%;
+  width: 100%;
 }
 
 label {
-    color: #fff;
+  color: #fff;
 }
 
 .infoperso {
-    background-color: #4472c4;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    border-radius: 15px;
-    color: #fff;
-    line-height: 2;
-    margin: 80px auto;
-    width: 80%;
+  background-color: #4472c4;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  border-radius: 15px;
+  color: #fff;
+  line-height: 2;
+  margin: 80px auto;
+  width: 80%;
 }
 
 .carnet {
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-top: 10px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 10px;
 }
 
 .vaccin {
-    width: 80%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    background-color: #4472c4;
-    border-radius: 15px;
-    padding: 10px;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background-color: #4472c4;
+  border-radius: 15px;
+  padding: 10px;
 }
 
 .ajoutvaccin {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
 }
 
 select {
-    height: 50px;
+  height: 50px;
 }
 
 .datevaccin input {
-    padding: 10px 30px;
-    border-radius: 15px;
+  padding: 10px 30px;
+  border-radius: 15px;
 }
 
 .submit {
-    background-color: green;
-    color: #fff;
-    width: 15%;
-    height: 50px;
-    font-size: 20px;
-    cursor: pointer;
+  background-color: #18810f;
+  color: #fff;
+  width: 15%;
+  height: 50px;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .submit:hover {
-    background-color: #07d407;
-    transition: 0.2s;
+  background-color: #23c214;
+  transition: 0.2s;
 }
 
 .tableau {
-    border: 1px solid yellow;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #fff;
-    border-radius: 15px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 10%;
-    margin-right: 10%;
-    height: 200px;
-    overflow: auto;
-    width: 80%;
+  background-color: lightgray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10%;
+  margin-right: 10%;
+  height: 200px;
+  overflow: auto;
+  width: 80%;
 }
 
 .infovaccin {
-    display: flex;
-    width: 90%;
-    justify-content: space-around;
+  display: flex;
+  width: 90%;
+  justify-content: space-around;
 }
 
 td img {
-    width: 50px;
+  width: 50px;
 }
 
 .infovaccin p {
-    width: 30%;
+  width: 30%;
 }
 
 .option-vaccin {
-    display: flex;
-    width: 20%;
-    justify-content: center;
+  display: flex;
+  width: 20%;
+  justify-content: center;
 }
 
 .button {
-    margin-left: 20px;
-    height: 40px;
-    display: flex;
-    align-items: center;
+  margin-left: 20px;
+  height: 40px;
+  display: flex;
+  align-items: center;
 }
 
 .contour {
-    border: 2px solid green;
-    border-radius: 15px;
+  border: 2px solid green;
+  border-radius: 15px;
+}
+
+.modif:hover,
+.delete:hover {
+  background-color: lightgray;
+  border-radius: 10px;
 }
 
 footer {
-    margin-top: 40px;
+  margin-top: 40px;
 }
-
 
 /*--------------------------------responsive------------------------------------*/
 
-
 /*---------------tablette-----------------*/
 
-@media(max-width:900px) {
-    .vaccin {
-        width: 100%;
-        margin: 10px 0;
-        padding: 20px 0;
-    }
+@media (max-width: 900px) {
+  .vaccin {
+    width: 100%;
+    margin: 10px 0;
+    padding: 20px 0;
+  }
 }
-
 
 /*-----------------mobile-------------------*/
 
-@media(max-width:600px) {
-    .vaccin {
-        width: 100%;
-        margin: 10px 0;
-        padding: 20px 0;
-        font-size: small;
-        line-height: 2;
-    }
-    .ajoutvaccin {
-        flex-direction: column;
-    }
-    .contour {
-        margin: 5px;
-    }
-    .ajouter {
-        font-size: small;
-    }
-    td {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+@media (max-width: 600px) {
+  .vaccin {
+    width: 100%;
+    margin: 10px 0;
+    padding: 20px 0;
+    font-size: small;
+    line-height: 2;
+  }
+  .ajoutvaccin {
+    flex-direction: column;
+  }
+  .contour {
+    margin: 5px;
+  }
+  .ajouter {
+    font-size: small;
+  }
+  td {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .modif,
+  .delete {
+    width: 40px;
+  }
 }

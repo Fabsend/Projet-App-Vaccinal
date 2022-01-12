@@ -11,7 +11,7 @@
 
 <body>
     <?php
-    include("header.php") ?>
+    include("headeraccueil.php") ?>
     <section class="mentionlegale">
         <h1 class="mentionlegaletitre">
             Mention Légale
