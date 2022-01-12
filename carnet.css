@@ -124,7 +124,6 @@ td img {
 }
 
 .button {
-  margin-left: 20px;
   height: 40px;
   display: flex;
   align-items: center;
@@ -165,7 +164,6 @@ footer {
     margin: 10px 0;
     padding: 20px 0;
     font-size: small;
-    line-height: 2;
   }
   .ajoutvaccin {
     flex-direction: column;
@@ -178,11 +176,28 @@ footer {
   }
   td {
     display: flex;
-    flex-direction: column;
     align-items: center;
   }
-  .modif,
+  .modif img {
+    margin-left: 10px;
+    width: 40px;
+  }
   .delete {
     width: 40px;
+  }
+  .option-vaccin {
+    padding-right: 30px;
+  }
+  .infovaccin {
+    font-size: 11px;
+    display: block;
+    margin-left: 15px;
+    margin-top: 5px;
+  }
+  .infovaccin p {
+    margin-bottom: 5px;
+  }
+  .submit {
+    width: 20%;
   }
 }
