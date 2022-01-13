@@ -145,10 +145,20 @@ form a {
 input {
     padding: 15px;
     border-radius: 5px;
+    border: none;
 }
 
 .connex {
     width: 300px;
+}
+
+.valider {
+    border: none;
+    cursor: pointer;
+}
+
+.valider:hover {
+    background-color: #b1b0b0;
 }
 
 

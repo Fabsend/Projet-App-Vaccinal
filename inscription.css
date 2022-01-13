@@ -6,7 +6,6 @@
 
 .inscription {
     width: 500px;
-    border: 1px solid black;
     margin: 50px auto;
     background-color: #4472c4;
     color: #fff;
@@ -44,6 +43,12 @@ input:nth-child(3) {
     border-radius: 5px;
     margin-bottom: 5px;
     background-color: lawngreen;
+    border: none;
+    cursor: pointer;
+}
+
+.inscrire-btn input:hover {
+    background-color: #70c917;
 }
 
 p {
@@ -54,6 +59,10 @@ p {
 .inscription a {
     color: #fff;
     text-decoration: underline;
+}
+
+input {
+    border: none;
 }
 
 

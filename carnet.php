@@ -1,6 +1,6 @@
 <?php
 
-$pdo = new PDO('mysql:host=localhost;dbname=mon_carnet', "root", "root");
+$pdo = new PDO('mysql:host=localhost;dbname=mon_carnet',  "root");
 $requestvaccin = $pdo->prepare("SELECT * FROM `vaccin` JOIN utilisateur ON vaccin.utilisateur_id=utilisateur.id"); //Préparer
 $requestvaccin->execute(); //Executer 
 $vaccins = $requestvaccin->fetchAll();
@@ -73,7 +73,7 @@ if ($_SESSION["connected"] == true) {
                 <h4 title="PRENOM"><?php echo $affprofil[0]["prenom"] ?></h4>
 
 
-                <h4 class="infopersomail" title="E-MAIL"><?php echo $affprofil[0]["email"] ?></h4>
+                <h4 class="infomail" title="E-MAIL"><?php echo $affprofil[0]["email"] ?></h4>
 
                 <h4 title="DATE DE NAISSANCE"><?php echo date('d/m/Y', strtotime($affprofil[0]["date_de_naissance"])); ?></h4>
 
@@ -83,7 +83,7 @@ if ($_SESSION["connected"] == true) {
                 <form action="" method="POST" class="ajoutvaccin">
                     <div class="select">
                         <span class="fleche"></span>
-                        <select name="nom" class="contour">
+                        <select name="nom" class="typedevaccin">
                             <option value="">Type de Vaccin</option>
                             <?php foreach ($vaccinstype as $vaccintype) { ?>
                                 <option value="<?php echo $vaccintype["nom_vaccin"]; ?>"><?php echo $vaccintype["nom_vaccin"]; ?></option>
