@@ -1,6 +1,6 @@
 <?php
 
-$pdo = new PDO('mysql:host=localhost;dbname=mon_carnet', "root");
+$pdo = new PDO('mysql:host=localhost;dbname=mon_carnet', "root", "root");
 $requestvaccin = $pdo->prepare("SELECT * FROM `vaccin` JOIN utilisateur ON vaccin.utilisateur_id=utilisateur.id"); //Préparer
 $requestvaccin->execute(); //Executer 
 $vaccins = $requestvaccin->fetchAll();
