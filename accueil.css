@@ -148,6 +148,14 @@ input {
     border: none;
 }
 
+.message_erreur {
+    color: red;
+    background: #fff;
+    border-radius: 10px;
+    width: 70%;
+    margin: 5px auto;
+}
+
 .connex {
     width: 300px;
 }
