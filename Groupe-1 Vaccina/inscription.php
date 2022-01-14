@@ -48,6 +48,39 @@
                 <div class="inscrire-btn">
                     <input type="submit" value="S'inscrire">
                 </div>
+                <?php
+                session_start();
+                $pdo = new PDO('mysql:host=localhost;dbname=mon_carnet', "root", "root");
+                if (!empty($_POST)) {
+                    if (empty($_POST["nom"]) || empty($_POST["prenom"]) || empty($_POST["date"]) || empty($_POST["email"]) || empty($_POST["mdp"])) {
+                        echo "<p>Tous les champs ne sont pas remplis!!!</p>";
+                    } else {
+                        $nom = $_POST['nom'];
+                        $prenom = $_POST['prenom'];
+                        $date = $_POST['date'];
+                        $email = $_POST['email'];
+                        $mdp = $_POST['mdp'];
+                        $role = "user";
+                        $ver = $pdo->prepare("SELECT * FROM utilisateur WHERE email='$email'");
+                        $ver->execute();
+                        $users = $ver->fetch();
+                        $id = $users['id'];
+                        if ($users) {
+                            echo "<p>L'adresse Mail est déja utilisé</p>";
+                        } else {
+                            $req = $pdo->prepare("INSERT INTO utilisateur (nom, prenom, date_de_naissance, email, password, role) VALUES ('$nom', '$prenom', '$date', '$email', '$mdp', '$role')");
+                            $req->execute();
+                            $_SESSION['connected'] = true;
+                            $_SESSION['nom'] = $nom;
+                            $_SESSION['prenom'] = $prenom;
+                            $_SESSION['date_de_naissance'] = $date;
+                            $_SESSION['email'] = $email;
+                            $_SESSION['password'] = $mdp;
+                            header('Location: accueil.php');
+                        }
+                    }
+                }
+                ?>
                 <p> Vous avez déja un compte ? <a href="accueil.php">Connectez vous</a>
                 </p>
             </form>
@@ -57,38 +90,7 @@
     <?php
     include("footer.php")
     ?>
-    <?php
-    session_start();
-    $pdo = new PDO('mysql:host=localhost;dbname=mon_carnet', "root", "root");
-    if (!empty($_POST)) {
-        if (empty($_POST["nom"]) || empty($_POST["prenom"]) || empty($_POST["date"]) || empty($_POST["email"]) || empty($_POST["mdp"])) {
-            echo ("Tous les champs ne sont pas remplis!!!");
-        } else {
-            $nom = $_POST['nom'];
-            $prenom = $_POST['prenom'];
-            $date = $_POST['date'];
-            $email = $_POST['email'];
-            $mdp = $_POST['mdp'];
-            $role = "user";
-            $ver = $pdo->prepare("SELECT * FROM utilisateur WHERE email='$email'");
-            $ver->execute();
-            $users = $ver->fetch();
-            $id = $users['id'];
-            if ($users) {
-                echo ("L'adresse email est déjà utilisée!");
-            } else {
-                $req = $pdo->prepare("INSERT INTO utilisateur (nom, prenom, date_de_naissance, email, password, role) VALUES ('$nom', '$prenom', '$date', '$email', '$mdp', '$role')");
-                $req->execute();
-                $_SESSION['connected'] = true;
-                $_SESSION['nom'] = $nom;
-                $_SESSION['prenom'] = $prenom;
-                $_SESSION['date_de_naissance'] = $date;
-                $_SESSION['email'] = $email;
-                $_SESSION['password'] = $mdp;
-                header('Location: accueil.php');
-            }
-        }
-    }
+
     ?>
 </body>
 

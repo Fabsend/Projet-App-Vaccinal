@@ -5,11 +5,6 @@ $id = $_SESSION['id'];
 $recu_info = $pdo->prepare("SELECT * FROM utilisateur WHERE id = $id");
 $recu_info->execute();
 $recu_info = $recu_info->fetch();
-?>
-
-
-<?php
-
 
 if (!empty($_POST)) {
     $nom = $_POST['nom'];
@@ -27,13 +22,16 @@ if (!empty($_POST)) {
             $req1->execute();
             header('Location: carnet.php');
         } else {
-            echo ("L'adresse email est déjà utilisée!");
+            $erreur = true;
+            $adresse = "L'adresse email est déjà utilisée!";
         }
     } else {
         $req2 = $pdo->prepare("UPDATE `utilisateur` SET `nom` = '$nom', `prenom` = '$prenom', `email` = '$email', `password` = '$password' WHERE `utilisateur`.`id` = '$id' ");
         $req2->execute();
         header('Location: carnet.php');
     }
+} else {
+    $erreur = false;
 }
 
 if ($_SESSION["connected"] == true) {
@@ -86,7 +84,12 @@ if ($_SESSION["connected"] == true) {
                                                                 ?>">
 
                 </div>
-                <input class="submit-button" type="submit" value="Modifier">
+                <input class="submit-button" type="submit" value="Modifier"><br>
+                <?php
+                if ($erreur == true) {
+                    echo $adresse;
+                }
+                ?>
 
             </form>
         </section>
