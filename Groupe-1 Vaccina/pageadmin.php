@@ -1,4 +1,4 @@
-<?php $pdo = new PDO('mysql:host=localhost;dbname=mon_carnet', "root", "root");
+<?php include("connexionPdo.php");
 session_start();
 $search = "";
 

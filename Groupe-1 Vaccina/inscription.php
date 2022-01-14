@@ -50,7 +50,7 @@
                 </div>
                 <?php
                 session_start();
-                $pdo = new PDO('mysql:host=localhost;dbname=mon_carnet', "root", "root");
+                include("connexionPdo.php");
                 if (!empty($_POST)) {
                     if (empty($_POST["nom"]) || empty($_POST["prenom"]) || empty($_POST["date"]) || empty($_POST["email"]) || empty($_POST["mdp"])) {
                         echo "<p>Tous les champs ne sont pas remplis!!!</p>";

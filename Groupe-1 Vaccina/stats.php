@@ -1,6 +1,6 @@
 <?php
 session_start();
-$pdo = new PDO('mysql:host=localhost;dbname=mon_carnet', "root", "root");
+include("connexionPdo.php");
 
 $req = $pdo->prepare("SELECT role, COUNT(*) FROM utilisateur GROUP BY role");
 $req->execute();

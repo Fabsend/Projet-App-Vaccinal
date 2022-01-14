@@ -1,5 +1,5 @@
 <?php session_start();
-$pdo = new PDO('mysql:host=localhost;dbname=mon_carnet', "root", "root");
+include("connexionPdo.php");
 $requesttypevaccin = $pdo->prepare("SELECT * FROM `type_vaccin`"); //Préparer
 $requesttypevaccin->execute(); //Executer 
 $vaccinstype = $requesttypevaccin->fetchAll();

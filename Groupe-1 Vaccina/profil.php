@@ -1,5 +1,5 @@
 <?php
-$pdo = new PDO('mysql:host=localhost;dbname=mon_carnet', "root", "root");
+include("connexionPdo.php");
 session_start();
 $id = $_SESSION['id'];
 $recu_info = $pdo->prepare("SELECT * FROM utilisateur WHERE id = $id");
